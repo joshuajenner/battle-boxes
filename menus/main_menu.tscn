@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dpehwmd85w30g"]
+
+[node name="MainMenu" type="Control" unique_id=805040149]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleContainer" type="VBoxContainer" parent="." unique_id=19449229]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="TitleContainer" unique_id=74657149]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Hellfire Hustle"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="TitleContainer" unique_id=1387484034]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer2" type="Control" parent="TitleContainer" unique_id=1187541067]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="." unique_id=2145335564]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 273.0
+offset_right = 611.0
+offset_bottom = 374.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="ButtonsContainer" unique_id=1383112811]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="ButtonsContainer" unique_id=2004664074]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="ButtonsContainer" unique_id=1782029565]
+layout_mode = 2
+text = "Quit"
