@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b0yg3j2hnuhlp"]
+
+[ext_resource type="Script" uid="uid://kek5od7i57da" path="res://levels/spawner.gd" id="1_u25oc"]
+[ext_resource type="PackedScene" uid="uid://2gliggdm8ayc" path="res://enemies/zombie.tscn" id="2_fh533"]
+
+[node name="Spawner" type="Node2D" unique_id=1002635223 node_paths=PackedStringArray("timer")]
+script = ExtResource("1_u25oc")
+timer = NodePath("Timer")
+zombie = ExtResource("2_fh533")
+
+[node name="Timer" type="Timer" parent="." unique_id=819338391]
+one_shot = true

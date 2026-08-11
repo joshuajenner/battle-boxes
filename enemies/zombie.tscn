@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://2gliggdm8ayc"]
+
+[ext_resource type="Script" uid="uid://cb3nqjp7fpq06" path="res://enemies/zombie.gd" id="1_uur8n"]
+[ext_resource type="Texture2D" uid="uid://cpyuk5ttwqa06" path="res://enemies/zombie.png" id="2_ujw3w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahg1b"]
+radius = 5.0
+height = 24.0
+
+[node name="Zombie" type="CharacterBody2D" unique_id=807111278]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_uur8n")
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=55146116]
+texture = ExtResource("2_ujw3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1134526422]
+shape = SubResource("CapsuleShape2D_ahg1b")
