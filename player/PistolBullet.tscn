@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dpykyiq83n7vr"]
+
+[ext_resource type="Script" uid="uid://dgtnf18hbvw3" path="res://player/pistol_bullet.gd" id="1_4pmmp"]
+[ext_resource type="Texture2D" uid="uid://cl51clcknvaig" path="res://player/bullet.png" id="1_emab3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pmmp"]
+size = Vector2(8, 6)
+
+[node name="PistolBullet" type="Area2D" unique_id=1120601454]
+script = ExtResource("1_4pmmp")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=57401414]
+shape = SubResource("RectangleShape2D_4pmmp")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=807111673]
+texture = ExtResource("1_emab3")

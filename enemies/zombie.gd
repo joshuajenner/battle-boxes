@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var body_sprite: Sprite2D = $BodySprite
 
 
-var move_speed: float = 75
+var move_speed: float = 60
 var direction: int = 1
 
 
