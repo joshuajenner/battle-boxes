@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cfjy06s4fxai1" path="res://levels/level_test/test_tile_set.tres" id="1_kshei"]
 [ext_resource type="PackedScene" uid="uid://bioro8tgyhahn" path="res://player/player.tscn" id="2_cu8xp"]
 [ext_resource type="PackedScene" uid="uid://b0yg3j2hnuhlp" path="res://levels/spawner.tscn" id="3_0ewvk"]
+[ext_resource type="PackedScene" uid="uid://d4dm1gyla7h5a" path="res://crate/crate.tscn" id="4_lke4h"]
 
 [node name="LevelTest" type="Node2D" unique_id=2033538592]
 
@@ -24,3 +25,6 @@ position = Vector2(0, 12)
 
 [node name="Player" parent="." unique_id=241208287 instance=ExtResource("2_cu8xp")]
 position = Vector2(20, 60)
+
+[node name="Crate" parent="." unique_id=1952715960 instance=ExtResource("4_lke4h")]
+position = Vector2(84, 64)

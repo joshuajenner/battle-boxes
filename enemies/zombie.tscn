@@ -2,18 +2,79 @@
 
 [ext_resource type="Script" uid="uid://cb3nqjp7fpq06" path="res://enemies/zombie.gd" id="1_uur8n"]
 [ext_resource type="Texture2D" uid="uid://cpyuk5ttwqa06" path="res://enemies/zombie.png" id="2_ujw3w"]
+[ext_resource type="PackedScene" uid="uid://xore34aqydk4" path="res://components/hurt_box_component.tscn" id="3_c8iql"]
+[ext_resource type="PackedScene" uid="uid://hx6b63ylctdv" path="res://components/health_component.tscn" id="4_1p8ux"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahg1b"]
 radius = 5.0
 height = 24.0
 
-[node name="Zombie" type="CharacterBody2D" unique_id=807111278]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8iql"]
+radius = 5.0
+height = 24.0
+
+[sub_resource type="Animation" id="Animation_ujw3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c8iql"]
+resource_name = "flash_red"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.29411766, 0.29411766, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1p8ux"]
+_data = {
+&"RESET": SubResource("Animation_ujw3w"),
+&"flash_red": SubResource("Animation_c8iql")
+}
+
+[node name="Zombie" type="CharacterBody2D" unique_id=807111278 node_paths=PackedStringArray("health_component")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_uur8n")
+health_component = NodePath("HealthComponent")
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=55146116]
 texture = ExtResource("2_ujw3w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1134526422]
+[node name="NavBox" type="CollisionShape2D" parent="." unique_id=1134526422]
 shape = SubResource("CapsuleShape2D_ahg1b")
+
+[node name="HurtBoxComponent" parent="." unique_id=641791970 instance=ExtResource("3_c8iql")]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" unique_id=374155966]
+shape = SubResource("CapsuleShape2D_c8iql")
+
+[node name="HealthComponent" parent="." unique_id=633740388 instance=ExtResource("4_1p8ux")]
+max_health = 10
+
+[node name="HitFlashPlayer" type="AnimationPlayer" parent="." unique_id=713317947]
+libraries/ = SubResource("AnimationLibrary_1p8ux")
+
+[connection signal="area_entered" from="HurtBoxComponent" to="HurtBoxComponent" method="_on_area_entered"]
+[connection signal="projectile_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_projectile_entered"]
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
