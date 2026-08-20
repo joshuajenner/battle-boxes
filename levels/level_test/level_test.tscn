@@ -2,8 +2,34 @@
 
 [ext_resource type="TileSet" uid="uid://cfjy06s4fxai1" path="res://levels/level_test/test_tile_set.tres" id="1_kshei"]
 [ext_resource type="PackedScene" uid="uid://bioro8tgyhahn" path="res://player/player.tscn" id="2_cu8xp"]
-[ext_resource type="PackedScene" uid="uid://b0yg3j2hnuhlp" path="res://levels/spawner.tscn" id="3_0ewvk"]
+[ext_resource type="PackedScene" uid="uid://b0yg3j2hnuhlp" path="res://levels/enemy_spawner.tscn" id="3_0ewvk"]
 [ext_resource type="PackedScene" uid="uid://d4dm1gyla7h5a" path="res://crate/crate.tscn" id="4_lke4h"]
+[ext_resource type="PackedScene" uid="uid://k1l003cvt3r" path="res://levels/crate_spawner.tscn" id="5_o873a"]
+[ext_resource type="PackedScene" uid="uid://dmak7r24ll3si" path="res://ui/hud.tscn" id="6_xssfl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hokst"]
+size = Vector2(288, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xssfl"]
+size = Vector2(120, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o873a"]
+size = Vector2(120, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04mhw"]
+size = Vector2(288, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyhwo"]
+size = Vector2(120, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ix4y"]
+size = Vector2(120, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq7hc"]
+size = Vector2(120, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83a7s"]
+size = Vector2(120, 24)
 
 [node name="LevelTest" type="Node2D" unique_id=2033538592]
 
@@ -22,9 +48,66 @@ tile_set = ExtResource("1_kshei")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=823235731]
 position = Vector2(0, 12)
+process_callback = 0
 
 [node name="Player" parent="." unique_id=241208287 instance=ExtResource("2_cu8xp")]
 position = Vector2(20, 60)
 
 [node name="Crate" parent="." unique_id=1952715960 instance=ExtResource("4_lke4h")]
-position = Vector2(84, 64)
+position = Vector2(86, -12)
+
+[node name="CrateSpawner" parent="." unique_id=1773167764 node_paths=PackedStringArray("spawn_node", "spawn_areas") instance=ExtResource("5_o873a")]
+spawn_node = NodePath("..")
+spawn_areas = [NodePath("../CrateSpawnAreas/TopMiddle/TMShape"), NodePath("../CrateSpawnAreas/MiddleLeft/MLShape"), NodePath("../CrateSpawnAreas/MiddleRight/MRShape"), NodePath("../CrateSpawnAreas/MiddleMiddle/MMShape"), NodePath("../CrateSpawnAreas/BottomFarLeft/BFLShape"), NodePath("../CrateSpawnAreas/BottomLeft/BLShape"), NodePath("../CrateSpawnAreas/BottomFarRight/BFRShape"), NodePath("../CrateSpawnAreas/BottomRight/BRShape")]
+
+[node name="CrateSpawnAreas" type="Node2D" parent="." unique_id=1560927553]
+
+[node name="TopMiddle" type="Area2D" parent="CrateSpawnAreas" unique_id=134536191]
+
+[node name="TMShape" type="CollisionShape2D" parent="CrateSpawnAreas/TopMiddle" unique_id=920222601]
+position = Vector2(0, -84)
+shape = SubResource("RectangleShape2D_hokst")
+
+[node name="MiddleLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=511053261]
+
+[node name="MLShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleLeft" unique_id=629999329]
+position = Vector2(-204, -12)
+shape = SubResource("RectangleShape2D_xssfl")
+
+[node name="MiddleRight" type="Area2D" parent="CrateSpawnAreas" unique_id=282685456]
+
+[node name="MRShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleRight" unique_id=2129158566]
+position = Vector2(204, -12)
+shape = SubResource("RectangleShape2D_o873a")
+
+[node name="MiddleMiddle" type="Area2D" parent="CrateSpawnAreas" unique_id=720116892]
+
+[node name="MMShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleMiddle" unique_id=2085503590]
+position = Vector2(0, 60)
+shape = SubResource("RectangleShape2D_04mhw")
+
+[node name="BottomFarLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=1497222963]
+
+[node name="BFLShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomFarLeft" unique_id=1367134798]
+position = Vector2(-204, 132)
+shape = SubResource("RectangleShape2D_eyhwo")
+
+[node name="BottomLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=565311119]
+
+[node name="BLShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomLeft" unique_id=241155293]
+position = Vector2(-84, 156)
+shape = SubResource("RectangleShape2D_7ix4y")
+
+[node name="BottomFarRight" type="Area2D" parent="CrateSpawnAreas" unique_id=1908343817]
+
+[node name="BFRShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomFarRight" unique_id=2040011059]
+position = Vector2(204, 132)
+shape = SubResource("RectangleShape2D_mq7hc")
+
+[node name="BottomRight" type="Area2D" parent="CrateSpawnAreas" unique_id=769917789]
+
+[node name="BRShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomRight" unique_id=679444528]
+position = Vector2(84, 156)
+shape = SubResource("RectangleShape2D_83a7s")
+
+[node name="HUD" parent="." unique_id=587562022 instance=ExtResource("6_xssfl")]
