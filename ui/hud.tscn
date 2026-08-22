@@ -6,6 +6,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_xssfl"]
 font = ExtResource("2_276te")
 font_size = 32
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 2)
 
 [node name="HUD" type="CanvasLayer" unique_id=587562022 node_paths=PackedStringArray("score_label")]
 script = ExtResource("1_rbyyf")

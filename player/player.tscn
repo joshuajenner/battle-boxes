@@ -15,7 +15,7 @@ script = ExtResource("1_rkbax")
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=1794200612]
 texture = ExtResource("1_oul6g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906684569]
+[node name="NavBox" type="CollisionShape2D" parent="." unique_id=906684569]
 shape = SubResource("CapsuleShape2D_ahg1b")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1640831766]
