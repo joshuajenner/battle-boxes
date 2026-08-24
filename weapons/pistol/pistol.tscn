@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dvq8ltolgnx3c"]
+
+[ext_resource type="Texture2D" uid="uid://b70ypevh2lmv3" path="res://weapons/pistol/pistol.png" id="1_1ohd4"]
+[ext_resource type="Script" uid="uid://s38wlt0bfvfa" path="res://weapons/pistol/pistol.gd" id="1_5icxk"]
+[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_f30ot"]
+
+[node name="Pistol" type="Node2D" unique_id=2099555663 node_paths=PackedStringArray("muzzle", "fire_rate_timer")]
+script = ExtResource("1_5icxk")
+bullet_scene = ExtResource("2_f30ot")
+muzzle = NodePath("Muzzle")
+fire_rate_sec = 0.15
+fire_rate_timer = NodePath("FireRateTimer")
+is_directional = true
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1677122759]
+texture = ExtResource("1_1ohd4")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1720570947]
+position = Vector2(16, 0)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1928529572]

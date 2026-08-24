@@ -1,9 +1,9 @@
 extends Node2D
 
 
-@export var timer: Timer
 @export var zombie: PackedScene
 
+@export var timer: Timer
 
 @export var spawn_cooldown_sec: float
 

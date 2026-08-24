@@ -9,10 +9,10 @@ const CRATE = preload("uid://d4dm1gyla7h5a")
 
 
 func _ready() -> void:
-	GameEvent.crate_picked_up.connect(on_crate_picked_up)
+	GameEvent.crate_picked_up.connect(spawn_crate)
 
 
-func on_crate_picked_up() -> void:
+func spawn_crate() -> void:
 	var spawn_area: CollisionShape2D = spawn_areas.pick_random()
 	var spawn_rect: Rect2 = spawn_area.shape.get_rect()
 	var spawn_x: float = randf_range(spawn_rect.position.x, spawn_rect.position.x + spawn_rect.size.x)

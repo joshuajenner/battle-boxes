@@ -24,6 +24,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_xkpxs")
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=395719592]
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=2081754610]
 shape = SubResource("RectangleShape2D_ncwnf")
