@@ -1,4 +1,5 @@
-extends MarginContainer
+class_name GameEndUI
+extends CanvasLayer
 
 
 @export var replay_button: Button

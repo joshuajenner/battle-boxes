@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dqkn674vu5nvi"]
+
+[ext_resource type="Script" uid="uid://blgclp2ocp84v" path="res://ui/game_hud_ui.gd" id="1_io01e"]
+[ext_resource type="FontFile" uid="uid://knl5jbwyuem3" path="res://assets/BoldPixels.ttf" id="2_5bps4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ihmi"]
+font = ExtResource("2_5bps4")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 2)
+
+[node name="GameHUD" type="CanvasLayer" unique_id=430671502 node_paths=PackedStringArray("score_label")]
+script = ExtResource("1_io01e")
+score_label = NodePath("ScoreLabel")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=2144544660]
+offset_right = 640.0
+offset_bottom = 28.0
+size_flags_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_7ihmi")
+horizontal_alignment = 1

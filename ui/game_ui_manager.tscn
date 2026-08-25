@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dmak7r24ll3si"]
 
-[ext_resource type="Script" uid="uid://blgclp2ocp84v" path="res://ui/hud.gd" id="1_rbyyf"]
-[ext_resource type="Script" uid="uid://cossj1l0ycf0g" path="res://ui/game_ui.gd" id="1_w46tp"]
+[ext_resource type="Script" uid="uid://cossj1l0ycf0g" path="res://ui/game_ui_manager.gd" id="1_e4wqv"]
+[ext_resource type="Script" uid="uid://blgclp2ocp84v" path="res://ui/game_hud_ui.gd" id="1_rbyyf"]
 [ext_resource type="FontFile" uid="uid://knl5jbwyuem3" path="res://assets/BoldPixels.ttf" id="2_276te"]
-[ext_resource type="Script" uid="uid://pxdxn7poqyxf" path="res://ui/end.gd" id="4_pylni"]
+[ext_resource type="Script" uid="uid://pxdxn7poqyxf" path="res://ui/game_end_ui.gd" id="4_e4wqv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xssfl"]
 font = ExtResource("2_276te")
@@ -12,9 +12,9 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(0, 2)
 
-[node name="GameUI" type="CanvasLayer" unique_id=587562022 node_paths=PackedStringArray("hud", "game_end")]
-script = ExtResource("1_w46tp")
-hud = NodePath("Hud")
+[node name="GameUI" type="CanvasLayer" unique_id=587562022 node_paths=PackedStringArray("game_end")]
+process_mode = 3
+script = ExtResource("1_e4wqv")
 game_end = NodePath("End")
 
 [node name="Hud" type="MarginContainer" parent="." unique_id=46592953 node_paths=PackedStringArray("score_label")]
@@ -40,12 +40,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_pylni")
+script = ExtResource("4_e4wqv")
 replay_button = NodePath("VBoxContainer/Buttons/PlayAgainButton")
 
 [node name="Overlay" type="ColorRect" parent="End" unique_id=1976895790]
 layout_mode = 2
-color = Color(0, 0, 0.019607844, 0.6862745)
+color = Color(0.5882353, 0, 0.019607844, 0.6862745)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="End" unique_id=2077220071]
 layout_mode = 2

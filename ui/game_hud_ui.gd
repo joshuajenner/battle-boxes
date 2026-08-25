@@ -1,5 +1,5 @@
-class_name HUD
-extends MarginContainer
+class_name GameHUDUI
+extends CanvasLayer
 
 
 @export var score_label: Label
