@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c11t2mn5l033t" path="res://ui/game_pause_ui.gd" id="1_hc0p7"]
 
-[node name="GamePause" type="CanvasLayer" unique_id=1400345186 node_paths=PackedStringArray("resume_button")]
+[node name="GamePause" type="CanvasLayer" unique_id=1400345186 node_paths=PackedStringArray("resume_button", "quit_button")]
 process_mode = 3
 script = ExtResource("1_hc0p7")
 resume_button = NodePath("VBoxContainer/Buttons/ResumButton")
+quit_button = NodePath("VBoxContainer/Buttons/QuitButton")
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=1134161066]
 anchors_preset = 15

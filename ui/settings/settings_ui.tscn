@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ce5wptxn4linc"]
+
+[ext_resource type="Script" uid="uid://d8n8f0o3brn4" path="res://ui/settings/settings_ui.gd" id="1_hmly7"]
+[ext_resource type="Script" uid="uid://b3vy3jld1v505" path="res://ui/settings/resolution_option_button.gd" id="2_1ub5d"]
+
+[node name="SettingsUI" type="TabContainer" unique_id=117789628 node_paths=PackedStringArray("resolution_option_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("1_hmly7")
+resolution_option_button = NodePath("Display/VBoxContainer/HBoxContainer/OptionButton")
+
+[node name="Display" type="MarginContainer" parent="." unique_id=908492743]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Display" unique_id=1424913685]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Display/VBoxContainer" unique_id=1469559455]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Display/VBoxContainer/HBoxContainer" unique_id=1107643241]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="Display/VBoxContainer/HBoxContainer" unique_id=1264456957]
+layout_mode = 2
+script = ExtResource("2_1ub5d")
+
+[node name="Audio" type="MarginContainer" parent="." unique_id=1985244906]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Keybinds" type="MarginContainer" parent="." unique_id=1927836103]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Gamepad" type="MarginContainer" parent="." unique_id=553728757]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3

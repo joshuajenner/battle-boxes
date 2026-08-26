@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://dpehwmd85w30g"]
 
-[node name="MainMenu" type="Control" unique_id=805040149]
+[ext_resource type="Script" uid="uid://lxwbf0oustko" path="res://menus/main_menu.gd" id="1_8gy84"]
+
+[node name="MainMenu" type="Control" unique_id=805040149 node_paths=PackedStringArray("play_button", "settings_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8gy84")
+play_button = NodePath("ButtonsContainer/PlayButton")
+settings_button = NodePath("ButtonsContainer/OptionsButton")
 
 [node name="TitleContainer" type="VBoxContainer" parent="." unique_id=19449229]
 layout_mode = 1
@@ -19,9 +24,10 @@ alignment = 1
 
 [node name="TitleLabel" type="Label" parent="TitleContainer" unique_id=74657149]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
 text = "Battle Boxes"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Spacer" type="Control" parent="TitleContainer" unique_id=1387484034]
 layout_mode = 2
@@ -54,7 +60,11 @@ text = "Play"
 
 [node name="OptionsButton" type="Button" parent="ButtonsContainer" unique_id=2004664074]
 layout_mode = 2
-text = "Options"
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="ButtonsContainer" unique_id=29991078]
+layout_mode = 2
+text = "Credits"
 
 [node name="QuitButton" type="Button" parent="ButtonsContainer" unique_id=1782029565]
 layout_mode = 2

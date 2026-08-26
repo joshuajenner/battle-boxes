@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dd82tfyhd46kb"]
+
+[ext_resource type="Script" uid="uid://35jg217baau8" path="res://menus/level_select.gd" id="1_a00cd"]
+[ext_resource type="Texture2D" uid="uid://cp5654tesmc32" path="res://ui/level_select/level_1_thumb.png" id="1_x5a0v"]
+
+[node name="LevelSelect" type="MarginContainer" unique_id=341223851 node_paths=PackedStringArray("play_level_1_button", "back_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a00cd")
+play_level_1_button = NodePath("VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/Button")
+back_button = NodePath("VBoxContainer/HBoxContainer/BackButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1182971432]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1322300002]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=40644628]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Select"
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=914042442]
+layout_mode = 2
+text = "Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=908673891]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1123945508]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1925200990]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=197409639]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_x5a0v")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=694166734]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=44845737]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"

@@ -18,11 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameEvent="*uid://ybsgvqjptbxm"
+SceneManager="*uid://btpttjvmax56f"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

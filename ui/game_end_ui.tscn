@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://pxdxn7poqyxf" path="res://ui/game_end_ui.gd" id="1_7bk81"]
 
-[node name="GameEndUI" type="CanvasLayer" unique_id=100207249 node_paths=PackedStringArray("replay_button")]
+[node name="GameEndUI" type="CanvasLayer" unique_id=100207249 node_paths=PackedStringArray("replay_button", "quit_button")]
 script = ExtResource("1_7bk81")
 replay_button = NodePath("VBoxContainer/Buttons/ReplayButton")
+quit_button = NodePath("VBoxContainer/Buttons/QuitButton")
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=2112533935]
 anchors_preset = 15
