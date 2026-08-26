@@ -8,9 +8,10 @@
 script = ExtResource("1_5icxk")
 bullet_scene = ExtResource("2_f30ot")
 muzzle = NodePath("Muzzle")
-fire_rate_sec = 0.15
 fire_rate_timer = NodePath("FireRateTimer")
+fire_rate_sec = 0.15
 is_directional = true
+damage = 5
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1677122759]
 texture = ExtResource("1_1ohd4")

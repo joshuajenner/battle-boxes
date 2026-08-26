@@ -2,9 +2,10 @@ class_name Weapon
 extends Node2D
 
 
-@export var fire_rate_sec: float
 @export var fire_rate_timer: Timer
+@export var fire_rate_sec: float
 @export var is_directional: bool
+@export var damage: int
 
 var projetile_parent_node: Node2D
 var direction_x: float

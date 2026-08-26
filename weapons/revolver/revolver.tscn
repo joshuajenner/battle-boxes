@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://yb8xf8h3it3q"]
+
+[ext_resource type="Script" uid="uid://dod6todtbnw0i" path="res://weapons/revolver/revolver.gd" id="1_711mg"]
+[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_hfse1"]
+[ext_resource type="Texture2D" uid="uid://cyg6ddnt38r4k" path="res://weapons/revolver/revolver.png" id="2_km6dq"]
+
+[node name="Revolver" type="Node2D" unique_id=870654941 node_paths=PackedStringArray("muzzle", "fire_rate_timer")]
+script = ExtResource("1_711mg")
+bullet_scene = ExtResource("2_hfse1")
+muzzle = NodePath("Muzzle")
+fire_rate_timer = NodePath("FireRateTimer")
+fire_rate_sec = 0.3
+is_directional = true
+damage = 10
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1499609750]
+texture = ExtResource("2_km6dq")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1564062056]
+position = Vector2(21, 0)
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=345720368]

@@ -9,6 +9,8 @@ extends Weapon
 func fire() -> void:
 	var bullet_right: Node2D = bullet_scene.instantiate()
 	var bullet_left: Node2D = bullet_scene.instantiate()
+	bullet_right.damage = damage
+	bullet_left.damage = damage
 	bullet_right.direction_x = 1
 	bullet_left.direction_x = -1
 	bullet_right.global_position = muzzle_right.global_position
