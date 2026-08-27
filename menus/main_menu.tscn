@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lxwbf0oustko" path="res://menus/main_menu.gd" id="1_8gy84"]
 
-[node name="MainMenu" type="Control" unique_id=805040149 node_paths=PackedStringArray("play_button", "settings_button", "credits_button")]
+[node name="MainMenu" type="Control" unique_id=805040149 node_paths=PackedStringArray("play_button", "settings_button", "credits_button", "quit_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ script = ExtResource("1_8gy84")
 play_button = NodePath("ButtonsContainer/PlayButton")
 settings_button = NodePath("ButtonsContainer/OptionsButton")
 credits_button = NodePath("ButtonsContainer/CreditsButton")
+quit_button = NodePath("ButtonsContainer/QuitButton")
 
 [node name="TitleContainer" type="VBoxContainer" parent="." unique_id=19449229]
 layout_mode = 1

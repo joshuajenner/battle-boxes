@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d8n8f0o3brn4" path="res://ui/settings/settings_ui.gd" id="1_hmly7"]
 [ext_resource type="Script" uid="uid://b3vy3jld1v505" path="res://ui/settings/resolution_option_button.gd" id="2_1ub5d"]
+[ext_resource type="Script" uid="uid://dur1c6qon51yk" path="res://ui/settings/window_mode_option_button.gd" id="2_e04ht"]
 
-[node name="SettingsUI" type="TabContainer" unique_id=117789628 node_paths=PackedStringArray("resolution_option_button")]
+[node name="SettingsUI" type="TabContainer" unique_id=117789628 node_paths=PackedStringArray("window_mode_option_button", "resolution_option_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,7 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
 script = ExtResource("1_hmly7")
-resolution_option_button = NodePath("Display/VBoxContainer/HBoxContainer/OptionButton")
+window_mode_option_button = NodePath("Display/VBoxContainer/Display/WindowModeButton")
+resolution_option_button = NodePath("Display/VBoxContainer/Resolution/ResolutionButton")
 
 [node name="Display" type="MarginContainer" parent="." unique_id=908492743]
 layout_mode = 2
@@ -23,16 +25,29 @@ metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Display" unique_id=1424913685]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Display/VBoxContainer" unique_id=1469559455]
+[node name="Display" type="HBoxContainer" parent="Display/VBoxContainer" unique_id=1469559455]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Display/VBoxContainer/HBoxContainer" unique_id=1107643241]
+[node name="Label" type="Label" parent="Display/VBoxContainer/Display" unique_id=1107643241]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Window Mode"
+
+[node name="WindowModeButton" type="OptionButton" parent="Display/VBoxContainer/Display" unique_id=1264456957]
+layout_mode = 2
+script = ExtResource("2_e04ht")
+
+[node name="Resolution" type="HBoxContainer" parent="Display/VBoxContainer" unique_id=2083264497]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Display/VBoxContainer/Resolution" unique_id=942627276]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Resolution"
 
-[node name="OptionButton" type="OptionButton" parent="Display/VBoxContainer/HBoxContainer" unique_id=1264456957]
+[node name="ResolutionButton" type="OptionButton" parent="Display/VBoxContainer/Resolution" unique_id=665693983]
 layout_mode = 2
 script = ExtResource("2_1ub5d")
 
@@ -45,8 +60,3 @@ metadata/_tab_index = 1
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
-
-[node name="Gamepad" type="MarginContainer" parent="." unique_id=553728757]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3

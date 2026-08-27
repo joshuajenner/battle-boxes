@@ -6,12 +6,13 @@ signal resolution_selected(resolution: Vector2i)
 
 
 var resolution_items: Array[Vector2i] = []
-const RES_NOT_FOUND_STRING: String = "Maximized"
 
 
 func _ready() -> void:
 	clear()
 	populate_resolution_items()
+	on_window_size_changed()
+	on_window_mode_changed(Settings.window_mode)
 	item_selected.connect(on_item_selected)
 	get_window().size_changed.connect(on_window_size_changed)
 
@@ -21,17 +22,22 @@ func on_item_selected(index: int) -> void:
 
 
 func on_window_size_changed() -> void:
-	var res_index: int = resolution_items.find(get_window().size)
-	if res_index == -1:
-		text = RES_NOT_FOUND_STRING
-	else:
-		var res: Vector2i = resolution_items[res_index]
-		text = str(res.x) + " x " + str(res.y)
+	var window_size: Vector2i = get_window().size
+	var res_index: int = resolution_items.find(window_size)
+	if res_index != -1:
+		select(res_index)
+	text = str(window_size.x) + " x " + str(window_size.y)
+
+
+func on_window_mode_changed(mode_index: int) -> void:
+	disabled = mode_index != Window.MODE_WINDOWED
 
 
 func populate_resolution_items() -> void:
 	var screen_resolution: Vector2i = DisplayServer.screen_get_size()
-	var base_game_resolution := Vector2i(640, 360)
+	var base_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
+	var base_height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
+	var base_game_resolution := Vector2i(base_width, base_height)
 	var scale: int = 1
 	var limit_found: bool = false
 	
