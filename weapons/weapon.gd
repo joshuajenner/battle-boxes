@@ -16,7 +16,7 @@ func _ready() -> void:
 	fire_rate_timer.one_shot = true
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_directional:
 		scale.x = direction_x
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy8yry512wg6s"
-path="res://.godot/imported/test_tile_set_x24.png-e6fcc2ab256d6a80a94bcaee6cf6389d.ctex"
+uid="uid://bkjn3b5lladjp"
+path="res://.godot/imported/test_tile_set.png-c567732fa2e1d4255bc4a2a6edcd589a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/level_test/test_tile_set_x24.png"
-dest_files=["res://.godot/imported/test_tile_set_x24.png-e6fcc2ab256d6a80a94bcaee6cf6389d.ctex"]
+source_file="res://game/test_tile_set.png"
+dest_files=["res://.godot/imported/test_tile_set.png-c567732fa2e1d4255bc4a2a6edcd589a.ctex"]
 
 [params]
 

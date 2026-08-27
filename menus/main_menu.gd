@@ -8,6 +8,7 @@ extends Control
 func _ready() -> void:
 	play_button.pressed.connect(on_play_button_pressed)
 	settings_button.pressed.connect(on_settings_button_pressed)
+	GameData.load_game_data()
 
 
 func on_play_button_pressed() -> void:

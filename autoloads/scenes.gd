@@ -14,4 +14,4 @@ const MAIN_MENU: String = "res://menus/main_menu.tscn"
 const LEVEL_SELECT: String = "res://menus/level_select.tscn"
 const SETTINGS_MENU: String = "res://menus/settings_menu.tscn"
 
-const GAME_LEVEL: String = "res://levels/level_test/level_test.tscn"
+const GAME_LEVEL: String = "res://game/game_level.tscn"
