@@ -9,5 +9,5 @@ func _ready() -> void:
 
 
 func on_back_button_pressed() -> void:
-	Settings.save_settings()
+	#Settings.save_settings()
 	SceneManager.switch_to(Scenes.MAIN_MENU)

@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 GameEvent="*uid://ybsgvqjptbxm"
 SceneManager="*uid://btpttjvmax56f"
-Settings="*uid://c3rlbqej45fu2"
+VideoSettings="*uid://c3rlbqej45fu2"
 
 [display]
 

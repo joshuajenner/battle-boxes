@@ -1,32 +1,39 @@
 extends TabContainer
 
 
-@export var window_mode_option_button: WindowModeOptionButton
-@export var resolution_option_button: ResolutionOptionButton
+@export var save_button: Button
+@export var cancel_button: Button
+@export var reset_button: Button
 
 
 func _ready() -> void:
-	window_mode_option_button.window_mode_selected.connect(on_window_mode_selected)
-	resolution_option_button.resolution_selected.connect(on_resolution_selected)
+	on_video_settings_no_changes()
+	
+	save_button.pressed.connect(on_save_button_pressed)
+	cancel_button.pressed.connect(on_cancel_button_pressed)
+	reset_button.pressed.connect(on_reset_button_pressed)
+	VideoSettings.changed.connect(on_video_settings_changed)
+	VideoSettings.loaded_user.connect(on_video_settings_no_changes)
+	VideoSettings.saved.connect(on_video_settings_no_changes)
 
 
-func on_window_mode_selected(mode_index: int) -> void:
-	Settings.window_mode = mode_index
-	get_window().mode = mode_index
-	resolution_option_button.on_window_mode_changed(mode_index)
-	if mode_index == Window.MODE_WINDOWED:
-		get_window().size = Settings.resolution
-		center_window(Settings.resolution)
+func on_save_button_pressed() -> void:
+	VideoSettings.save()
 
 
-func on_resolution_selected(res: Vector2i) -> void:
-	Settings.resolution = res
-	get_window().size = res 
-	center_window(res)
+func on_cancel_button_pressed() -> void:
+	VideoSettings.load_user()
 
 
-func center_window(window_size: Vector2i) -> void:
-	var screen_index: int = get_window().current_screen
-	var screen_position: Vector2i = DisplayServer.screen_get_position(screen_index)
-	var window_offset: Vector2i = DisplayServer.screen_get_size(screen_index) / 2 - window_size / 2
-	get_window().position = screen_position + window_offset
+func on_reset_button_pressed() -> void:
+	VideoSettings.load_default()
+
+
+func on_video_settings_changed() -> void:
+	cancel_button.disabled = false
+	save_button.disabled = false
+
+
+func on_video_settings_no_changes() -> void:
+	save_button.disabled = true
+	cancel_button.disabled = true

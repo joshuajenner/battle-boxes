@@ -2,23 +2,20 @@ class_name ResolutionOptionButton
 extends OptionButton
 
 
-signal resolution_selected(resolution: Vector2i)
-
-
 var resolution_items: Array[Vector2i] = []
 
 
 func _ready() -> void:
-	clear()
 	populate_resolution_items()
 	on_window_size_changed()
-	on_window_mode_changed(Settings.window_mode)
+	on_window_mode_changed(VideoSettings.window_mode)
 	item_selected.connect(on_item_selected)
+	VideoSettings.window_mode_changed.connect(on_window_mode_changed)
 	get_window().size_changed.connect(on_window_size_changed)
 
 
 func on_item_selected(index: int) -> void:
-	resolution_selected.emit(resolution_items[index])
+	VideoSettings.set_resolution(resolution_items[index])
 
 
 func on_window_size_changed() -> void:
@@ -29,11 +26,12 @@ func on_window_size_changed() -> void:
 	text = str(window_size.x) + " x " + str(window_size.y)
 
 
-func on_window_mode_changed(mode_index: int) -> void:
-	disabled = mode_index != Window.MODE_WINDOWED
+func on_window_mode_changed(mode: Window.Mode) -> void:
+	disabled = mode != Window.MODE_WINDOWED
 
 
 func populate_resolution_items() -> void:
+	clear()
 	var screen_resolution: Vector2i = DisplayServer.screen_get_size()
 	var base_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var base_height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
