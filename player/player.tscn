@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c1mak1n3kw7oe" path="res://player/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://e818w2120bhr" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="PackedScene" uid="uid://yb8xf8h3it3q" path="res://weapons/revolver/revolver.tscn" id="3_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://dvq8ltolgnx3c" path="res://weapons/pistol/pistol.tscn" id="4_yw30f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahg1b"]
 radius = 5.0
@@ -15,17 +15,17 @@ height = 24.0
 [node name="Player" type="CharacterBody2D" unique_id=241208287 node_paths=PackedStringArray("weapon")]
 collision_mask = 4
 script = ExtResource("1_rkbax")
-weapon = NodePath("Weapon/Revolver")
+weapon = NodePath("Weapon/Pistol")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=1640831766]
+
+[node name="Pistol" parent="Weapon" unique_id=2099555663 instance=ExtResource("4_yw30f")]
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=1794200612]
 texture = ExtResource("1_oul6g")
 
 [node name="NavBox" type="CollisionShape2D" parent="." unique_id=906684569]
 shape = SubResource("CapsuleShape2D_ahg1b")
-
-[node name="Weapon" type="Node2D" parent="." unique_id=1640831766]
-
-[node name="Revolver" parent="Weapon" unique_id=870654941 instance=ExtResource("3_g1dw6")]
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1119742190]
 collision_mask = 2

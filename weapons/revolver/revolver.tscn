@@ -3,13 +3,16 @@
 [ext_resource type="Script" uid="uid://dod6todtbnw0i" path="res://weapons/revolver/revolver.gd" id="1_711mg"]
 [ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_hfse1"]
 [ext_resource type="Texture2D" uid="uid://cyg6ddnt38r4k" path="res://weapons/revolver/revolver.png" id="2_km6dq"]
+[ext_resource type="AudioStream" uid="uid://bw30uygmjsl3f" path="res://assets/sfx/pistol/Retro Gun SingleShot 01.wav" id="4_b7g5s"]
+[ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_5h0lk"]
 
-[node name="Revolver" type="Node2D" unique_id=870654941 node_paths=PackedStringArray("muzzle", "fire_rate_timer")]
+[node name="Revolver" type="Node2D" unique_id=870654941 node_paths=PackedStringArray("muzzle", "weapon_audio_player", "fire_rate_timer")]
 script = ExtResource("1_711mg")
 bullet_scene = ExtResource("2_hfse1")
 muzzle = NodePath("Muzzle")
+weapon_audio_player = NodePath("AudioStreamPlayer2D")
 fire_rate_timer = NodePath("FireRateTimer")
-fire_rate_sec = 0.3
+fire_rate_sec = 0.4
 is_directional = true
 damage = 10
 
@@ -20,3 +23,11 @@ texture = ExtResource("2_km6dq")
 position = Vector2(21, 0)
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=345720368]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1313625466]
+stream = ExtResource("4_b7g5s")
+max_polyphony = 6
+bus = &"GameSFX"
+script = ExtResource("5_5h0lk")
+pitch_scale_min = 0.95
+pitch_scale_max = 1.03

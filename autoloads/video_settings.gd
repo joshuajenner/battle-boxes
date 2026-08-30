@@ -6,6 +6,7 @@ extends Node
 signal window_mode_changed(mode: Window.Mode)
 signal changed()
 signal loaded_user()
+signal loaded_default()
 signal saved()
 
 
@@ -73,3 +74,4 @@ func load_default() -> void:
 	var width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
 	set_resolution(Vector2i(width, height))
+	loaded_default.emit()

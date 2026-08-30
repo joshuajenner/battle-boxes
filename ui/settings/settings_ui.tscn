@@ -3,28 +3,29 @@
 [ext_resource type="Script" uid="uid://d8n8f0o3brn4" path="res://ui/settings/settings_ui.gd" id="1_hmly7"]
 [ext_resource type="Script" uid="uid://b3vy3jld1v505" path="res://ui/settings/resolution_option_button.gd" id="2_1ub5d"]
 [ext_resource type="Script" uid="uid://dur1c6qon51yk" path="res://ui/settings/window_mode_option_button.gd" id="2_e04ht"]
+[ext_resource type="Script" uid="uid://bbpdu06ryyimw" path="res://ui/settings/video_settings_ui.gd" id="2_s7htu"]
 [ext_resource type="Script" uid="uid://cqhna81rs8w3b" path="res://ui/settings/audio_settings_ui.gd" id="4_a5sxg"]
 [ext_resource type="Script" uid="uid://c7kipcp7ssh37" path="res://ui/settings/volume_slider.gd" id="4_e04ht"]
 
-[node name="SettingsUI" type="TabContainer" unique_id=117789628 node_paths=PackedStringArray("save_button", "cancel_button", "reset_button")]
+[node name="SettingsUI" type="TabContainer" unique_id=117789628]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 script = ExtResource("1_hmly7")
-save_button = NodePath("Display/VBox/BottomBar/RightButtons/VSSaveButton")
-cancel_button = NodePath("Display/VBox/BottomBar/RightButtons/VSCancelButton")
-reset_button = NodePath("Display/VBox/BottomBar/VSResetButton")
 
-[node name="Display" type="MarginContainer" parent="." unique_id=908492743]
-visible = false
+[node name="Display" type="MarginContainer" parent="." unique_id=908492743 node_paths=PackedStringArray("save_button", "cancel_button", "reset_button")]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
+script = ExtResource("2_s7htu")
+save_button = NodePath("VBox/BottomBar/RightButtons/VSSaveButton")
+cancel_button = NodePath("VBox/BottomBar/RightButtons/VSCancelButton")
+reset_button = NodePath("VBox/BottomBar/VSResetButton")
 metadata/_tab_index = 0
 
 [node name="VBox" type="VBoxContainer" parent="Display" unique_id=1779452411]
@@ -80,6 +81,7 @@ size_flags_horizontal = 0
 text = "Reset"
 
 [node name="Audio" type="MarginContainer" parent="." unique_id=1985244906 node_paths=PackedStringArray("save_button", "cancel_button", "reset_button")]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8

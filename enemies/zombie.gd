@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var health_component: HealthComponent
 
 var health: int = 10
-var move_speed: float = 60
+var move_speed: float = 100
 var direction: int = 1
 
 
