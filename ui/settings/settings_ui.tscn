@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://d8n8f0o3brn4" path="res://ui/settings/settings_ui.gd" id="1_hmly7"]
 [ext_resource type="Script" uid="uid://b3vy3jld1v505" path="res://ui/settings/resolution_option_button.gd" id="2_1ub5d"]
 [ext_resource type="Script" uid="uid://dur1c6qon51yk" path="res://ui/settings/window_mode_option_button.gd" id="2_e04ht"]
+[ext_resource type="Script" uid="uid://cqhna81rs8w3b" path="res://ui/settings/audio_settings_ui.gd" id="4_a5sxg"]
+[ext_resource type="Script" uid="uid://c7kipcp7ssh37" path="res://ui/settings/volume_slider.gd" id="4_e04ht"]
 
 [node name="SettingsUI" type="TabContainer" unique_id=117789628 node_paths=PackedStringArray("save_button", "cancel_button", "reset_button")]
 anchors_preset = 15
@@ -10,13 +12,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 script = ExtResource("1_hmly7")
-save_button = NodePath("Display/VBoxContainer2/MarginContainer/HBoxContainer/VSSaveButton")
-cancel_button = NodePath("Display/VBoxContainer2/MarginContainer/HBoxContainer/VSCancelButton")
-reset_button = NodePath("Display/VBoxContainer2/MarginContainer/VSResetButton")
+save_button = NodePath("Display/VBox/BottomBar/RightButtons/VSSaveButton")
+cancel_button = NodePath("Display/VBox/BottomBar/RightButtons/VSCancelButton")
+reset_button = NodePath("Display/VBox/BottomBar/VSResetButton")
 
 [node name="Display" type="MarginContainer" parent="." unique_id=908492743]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -24,62 +27,222 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Display" unique_id=1779452411]
+[node name="VBox" type="VBoxContainer" parent="Display" unique_id=1779452411]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Display/VBoxContainer2" unique_id=1424913685]
+[node name="Main" type="VBoxContainer" parent="Display/VBox" unique_id=1424913685]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="Display" type="HBoxContainer" parent="Display/VBoxContainer2/VBoxContainer" unique_id=1469559455]
+[node name="Display" type="HBoxContainer" parent="Display/VBox/Main" unique_id=1469559455]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Display/VBoxContainer2/VBoxContainer/Display" unique_id=1107643241]
+[node name="Label" type="Label" parent="Display/VBox/Main/Display" unique_id=1107643241]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Window Mode"
 
-[node name="WindowModeButton" type="OptionButton" parent="Display/VBoxContainer2/VBoxContainer/Display" unique_id=1264456957]
+[node name="WindowModeButton" type="OptionButton" parent="Display/VBox/Main/Display" unique_id=1264456957]
 layout_mode = 2
 script = ExtResource("2_e04ht")
 
-[node name="Resolution" type="HBoxContainer" parent="Display/VBoxContainer2/VBoxContainer" unique_id=2083264497]
+[node name="Resolution" type="HBoxContainer" parent="Display/VBox/Main" unique_id=2083264497]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Display/VBoxContainer2/VBoxContainer/Resolution" unique_id=942627276]
+[node name="Label" type="Label" parent="Display/VBox/Main/Resolution" unique_id=942627276]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Resolution"
 
-[node name="ResolutionButton" type="OptionButton" parent="Display/VBoxContainer2/VBoxContainer/Resolution" unique_id=665693983]
+[node name="ResolutionButton" type="OptionButton" parent="Display/VBox/Main/Resolution" unique_id=665693983]
 layout_mode = 2
 script = ExtResource("2_1ub5d")
 
-[node name="MarginContainer" type="MarginContainer" parent="Display/VBoxContainer2" unique_id=2012940815]
+[node name="BottomBar" type="MarginContainer" parent="Display/VBox" unique_id=2012940815]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Display/VBoxContainer2/MarginContainer" unique_id=1421327725]
+[node name="RightButtons" type="HBoxContainer" parent="Display/VBox/BottomBar" unique_id=1421327725]
 layout_mode = 2
 alignment = 2
 
-[node name="VSCancelButton" type="Button" parent="Display/VBoxContainer2/MarginContainer/HBoxContainer" unique_id=1418031135]
+[node name="VSCancelButton" type="Button" parent="Display/VBox/BottomBar/RightButtons" unique_id=1418031135]
 layout_mode = 2
 text = "Cancel"
 
-[node name="VSSaveButton" type="Button" parent="Display/VBoxContainer2/MarginContainer/HBoxContainer" unique_id=180955416]
+[node name="VSSaveButton" type="Button" parent="Display/VBox/BottomBar/RightButtons" unique_id=180955416]
 layout_mode = 2
 text = "Save"
 
-[node name="VSResetButton" type="Button" parent="Display/VBoxContainer2/MarginContainer" unique_id=693667550]
+[node name="VSResetButton" type="Button" parent="Display/VBox/BottomBar" unique_id=693667550]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Reset"
 
-[node name="Audio" type="MarginContainer" parent="." unique_id=1985244906]
-visible = false
+[node name="Audio" type="MarginContainer" parent="." unique_id=1985244906 node_paths=PackedStringArray("save_button", "cancel_button", "reset_button")]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("4_a5sxg")
+save_button = NodePath("VBox/BottomBar/RightButtons/ASSaveButton")
+cancel_button = NodePath("VBox/BottomBar/RightButtons/ASCancelButton")
+reset_button = NodePath("VBox/BottomBar/ASResetButton")
 metadata/_tab_index = 1
+
+[node name="VBox" type="VBoxContainer" parent="Audio" unique_id=1345735453]
+layout_mode = 2
+
+[node name="Main" type="VBoxContainer" parent="Audio/VBox" unique_id=1685040784]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Audio/VBox/Main" unique_id=1461803034]
+layout_mode = 2
+text = "Volume"
+
+[node name="HSeparator" type="HSeparator" parent="Audio/VBox/Main" unique_id=571464327]
+layout_mode = 2
+
+[node name="Master" type="HBoxContainer" parent="Audio/VBox/Main" unique_id=1069654023]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Audio/VBox/Main/Master" unique_id=2022112458]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="Audio/VBox/Main/Master" unique_id=452467189 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_e04ht")
+audio_bus = &"Master"
+label = NodePath("MasterDisplay")
+
+[node name="MasterDisplay" type="Label" parent="Audio/VBox/Main/Master/MasterSlider" unique_id=165871775]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 0
+offset_left = -38.0
+offset_top = -3.0
+offset_right = -8.0
+offset_bottom = 20.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="GameSFX" type="HBoxContainer" parent="Audio/VBox/Main" unique_id=391901775]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Audio/VBox/Main/GameSFX" unique_id=98522795]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game SFX"
+
+[node name="GameSFXDisplay" type="Label" parent="Audio/VBox/Main/GameSFX" unique_id=1388705548]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="GameSFXSlider" type="HSlider" parent="Audio/VBox/Main/GameSFX" unique_id=853624268 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_e04ht")
+audio_bus = &"GameSFX"
+label = NodePath("../GameSFXDisplay")
+
+[node name="GameMusic" type="HBoxContainer" parent="Audio/VBox/Main" unique_id=490721162]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Audio/VBox/Main/GameMusic" unique_id=1034448195]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game Music"
+
+[node name="GameMusicDisplay" type="Label" parent="Audio/VBox/Main/GameMusic" unique_id=1364486443]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="GameMusicSlider" type="HSlider" parent="Audio/VBox/Main/GameMusic" unique_id=537711784 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_e04ht")
+audio_bus = &"GameMusic"
+label = NodePath("../GameMusicDisplay")
+
+[node name="MenuSFX" type="HBoxContainer" parent="Audio/VBox/Main" unique_id=634881955]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Audio/VBox/Main/MenuSFX" unique_id=1919436626]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Menu SFX"
+
+[node name="MenuSFXDisplay" type="Label" parent="Audio/VBox/Main/MenuSFX" unique_id=881711207]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="MenuSFXSlider" type="HSlider" parent="Audio/VBox/Main/MenuSFX" unique_id=577144157 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_e04ht")
+audio_bus = &"MenuSFX"
+label = NodePath("../MenuSFXDisplay")
+
+[node name="MenuMusic" type="HBoxContainer" parent="Audio/VBox/Main" unique_id=1206015825]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Audio/VBox/Main/MenuMusic" unique_id=1697130672]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Menu Music"
+
+[node name="MenuMusicDisplay" type="Label" parent="Audio/VBox/Main/MenuMusic" unique_id=352798017]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="MenuMusicSlider" type="HSlider" parent="Audio/VBox/Main/MenuMusic" unique_id=997550218 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("4_e04ht")
+audio_bus = &"MenuMusic"
+label = NodePath("../MenuMusicDisplay")
+
+[node name="BottomBar" type="MarginContainer" parent="Audio/VBox" unique_id=1586624021]
+layout_mode = 2
+
+[node name="RightButtons" type="HBoxContainer" parent="Audio/VBox/BottomBar" unique_id=36636366]
+layout_mode = 2
+alignment = 2
+
+[node name="ASCancelButton" type="Button" parent="Audio/VBox/BottomBar/RightButtons" unique_id=1344071203]
+layout_mode = 2
+text = "Cancel"
+
+[node name="ASSaveButton" type="Button" parent="Audio/VBox/BottomBar/RightButtons" unique_id=468945351]
+layout_mode = 2
+text = "Save"
+
+[node name="ASResetButton" type="Button" parent="Audio/VBox/BottomBar" unique_id=1318277276]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Reset"
 
 [node name="Keybinds" type="MarginContainer" parent="." unique_id=1927836103]
 visible = false
