@@ -5,8 +5,8 @@
 
 [node name="EnemySpawner" type="Node2D" unique_id=1002635223 node_paths=PackedStringArray("timer")]
 script = ExtResource("1_7cpu4")
-timer = NodePath("Timer")
 zombie = ExtResource("2_fh533")
+timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="." unique_id=819338391]
 one_shot = true

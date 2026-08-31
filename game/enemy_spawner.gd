@@ -7,8 +7,10 @@ extends Node2D
 
 @export var spawn_cooldown_sec: float
 
+@export var is_disabled: bool
 
 func _ready() -> void:
+	if is_disabled: return
 	timer.start(spawn_cooldown_sec)
 	timer.timeout.connect(spawn_zombie)
 
