@@ -21,7 +21,6 @@ buses/default_bus_layout="uid://bw64ec1qhfamv"
 
 [autoload]
 
-GameEvent="*uid://ybsgvqjptbxm"
 SceneManager="*uid://btpttjvmax56f"
 VideoSettings="*uid://c3rlbqej45fu2"
 AudioSettings="*uid://b00xjveq6va4e"

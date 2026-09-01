@@ -6,8 +6,8 @@ extends Node2D
 @export var timer: Timer
 
 @export var spawn_cooldown_sec: float
-
 @export var is_disabled: bool
+
 
 func _ready() -> void:
 	if is_disabled: return

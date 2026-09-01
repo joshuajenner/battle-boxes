@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://b43cgiwjulcpp"]
 
 [ext_resource type="Script" uid="uid://c11t2mn5l033t" path="res://ui/game_pause_ui.gd" id="1_hc0p7"]
+[ext_resource type="PackedScene" uid="uid://ce5wptxn4linc" path="res://ui/settings/settings_ui.tscn" id="2_djrru"]
 
-[node name="GamePause" type="CanvasLayer" unique_id=1400345186 node_paths=PackedStringArray("resume_button", "quit_button")]
+[node name="GamePause" type="CanvasLayer" unique_id=1400345186 node_paths=PackedStringArray("resume_button", "settings_button", "quit_button", "settings_back_button", "menu_container", "settings_container")]
 process_mode = 3
 script = ExtResource("1_hc0p7")
-resume_button = NodePath("VBoxContainer/Buttons/ResumButton")
-quit_button = NodePath("VBoxContainer/Buttons/QuitButton")
+resume_button = NodePath("Menu/Buttons/ResumButton")
+settings_button = NodePath("Menu/Buttons/SettingsButton")
+quit_button = NodePath("Menu/Buttons/QuitButton")
+settings_back_button = NodePath("Settings/VBox/TopBar/BackButton")
+menu_container = NodePath("Menu")
+settings_container = NodePath("Settings")
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=1134161066]
 anchors_preset = 15
@@ -16,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6862745)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=53231649]
+[node name="Menu" type="VBoxContainer" parent="." unique_id=53231649]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -30,22 +35,52 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1287211829]
+[node name="Label" type="Label" parent="Menu" unique_id=1287211829]
 layout_mode = 2
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="VBoxContainer" unique_id=2116693301]
+[node name="Buttons" type="VBoxContainer" parent="Menu" unique_id=2116693301]
 layout_mode = 2
 
-[node name="ResumButton" type="Button" parent="VBoxContainer/Buttons" unique_id=1410913777]
+[node name="ResumButton" type="Button" parent="Menu/Buttons" unique_id=1410913777]
 layout_mode = 2
 text = "Resume"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer/Buttons" unique_id=4300563]
+[node name="SettingsButton" type="Button" parent="Menu/Buttons" unique_id=4300563]
 layout_mode = 2
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/Buttons" unique_id=72439035]
+[node name="QuitButton" type="Button" parent="Menu/Buttons" unique_id=72439035]
 layout_mode = 2
 text = "Quit"
+
+[node name="Settings" type="MarginContainer" parent="." unique_id=140002463]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="Settings" unique_id=1633009315]
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="Settings/VBox" unique_id=1864398063]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/VBox/TopBar" unique_id=1850426814]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+
+[node name="BackButton" type="Button" parent="Settings/VBox/TopBar" unique_id=1651050093]
+layout_mode = 2
+text = "Back"
+
+[node name="SettingsUI" parent="Settings/VBox" unique_id=117789628 instance=ExtResource("2_djrru")]
+layout_mode = 2
+size_flags_vertical = 3

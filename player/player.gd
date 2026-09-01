@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+signal died()
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -11,8 +12,11 @@ var jump_speed: float = -400
 var direction_x: float = 1
 var is_dead: bool = false
 
+static var current: Player = null
+
 
 func _ready() -> void:
+	current = self
 	weapon.set_projetile_parent_node(get_parent())
 
 
@@ -59,4 +63,4 @@ func handle_animation(input_direction: float, current_direction: float) -> void:
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		is_dead = true
-		GameEvent.player_died.emit()
+		died.emit()
