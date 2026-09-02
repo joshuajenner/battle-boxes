@@ -2,6 +2,13 @@ class_name Weapon
 extends Node2D
 
 
+enum Type {
+	PISTOL,
+	DUAL_PISTOLS,
+	REVOLVER
+}
+
+@export var type: Type
 @export var fire_rate_timer: Timer
 @export var fire_rate_sec: float
 @export var is_directional: bool

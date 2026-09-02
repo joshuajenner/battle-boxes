@@ -5,6 +5,7 @@ signal died()
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@export var weapon_parent: Node2D
 @export var weapon: Weapon
 
 var move_speed: float = 180
@@ -58,6 +59,14 @@ func handle_animation(input_direction: float, current_direction: float) -> void:
 			animation_player.play("jump_right")
 		else:
 			animation_player.play("jump_left")
+
+
+func set_weapon(scene_path: String) -> void:
+	var new_weapon: Weapon = load(scene_path).instantiate()
+	new_weapon.set_projetile_parent_node(get_parent())
+	weapon.queue_free()
+	weapon = new_weapon
+	weapon_parent.add_child(new_weapon)
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:

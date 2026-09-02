@@ -8,16 +8,13 @@ extends Node
 @export var game_pause_ui: CanvasLayer
 
 
-var is_player_on_run: bool = true
+var is_game_over: bool = false
 var player: Player = null
 
 
 func _ready() -> void:
-	if not GameData.has_loaded:
-		GameData.load_game_data()
-	
 	player = Player.current
-	is_player_on_run = true
+	is_game_over = false
 	game_end_ui.visible = false
 	game_pause_ui.visible = false
 	
@@ -32,24 +29,31 @@ func spawn_box() -> void:
 
 
 func on_box_picked_up() -> void:
-	GameData.lifetime_score += 1
-	GameData.level_1_high_score += 1
+	GameSave.lifetime_score += 1
+	GameSave.level_1_high_score += 1
 	game_hud_ui.increase_score()
+	player.set_weapon(get_new_weapon(player.weapon.type))
 	spawn_box()
 
 
+func get_new_weapon(previous_weapon: Weapon.Type) -> String:
+	var all_weapons: Array[Weapon.Type] = GameData.weapons.duplicate()
+	all_weapons.erase(previous_weapon)
+	var weapon_definition = GameData.WEAPONS_LIST[all_weapons.pick_random()]
+	return weapon_definition.path
+
+
 func on_player_died() -> void:
-	is_player_on_run = false
+	is_game_over = true
 	game_end_ui.visible = true
-	GameData.save_game_data()
+	GameSave.save()
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		if is_player_on_run:
-			if get_tree().paused:
-				game_pause_ui.visible = false
-				get_tree().paused = false
-			else:
-				game_pause_ui.visible = true
-				get_tree().paused = true
+	if event.is_action_pressed("pause") and not is_game_over:
+		if get_tree().paused:
+			game_pause_ui.visible = false
+			get_tree().paused = false
+		else:
+			game_pause_ui.visible = true
+			get_tree().paused = true

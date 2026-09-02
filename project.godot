@@ -24,6 +24,8 @@ buses/default_bus_layout="uid://bw64ec1qhfamv"
 SceneManager="*uid://btpttjvmax56f"
 VideoSettings="*uid://c3rlbqej45fu2"
 AudioSettings="*uid://b00xjveq6va4e"
+GameSave="*uid://bvwcfgw2es7n3"
+GameData="*uid://o57ak7b5dho4"
 
 [display]
 

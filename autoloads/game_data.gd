@@ -1,32 +1,39 @@
-class_name GameData
-extends Object
+extends Node
 
 
-const SECTION_SCORE: String = "score"
-const KEY_LIFETIME: String = "lifetime"
-const KEY_LEVEL_1: String = "level_1"
-
-const GAME_SAVE_FILE_PATH: String = "user://game_save.cfg"
-
-
-static var selected_level_index: int = 0
-static var lifetime_score: int = 0
-static var level_1_high_score: int = 0
-
-static var has_loaded: bool = false
-
-
-static func save_game_data() -> void:
-	var config := ConfigFile.new()
-	config.set_value(SECTION_SCORE, KEY_LIFETIME, lifetime_score)
-	config.set_value(SECTION_SCORE, KEY_LEVEL_1, level_1_high_score)
-	config.save(GAME_SAVE_FILE_PATH)
+const WEAPONS_LIST: Dictionary = {
+	Weapon.Type.PISTOL: {
+		"name": "Pistol",
+		"path": "uid://dvq8ltolgnx3c"
+	},
+	Weapon.Type.DUAL_PISTOLS: {
+		"name": "Pistols Akimbo",
+		"path": "uid://dgn1vll41vjy5"
+	},
+	Weapon.Type.REVOLVER: {
+		"name": "Revolver",
+		"path": "uid://yb8xf8h3it3q"
+	},
+}
 
 
-static func load_game_data() -> void:
-	var config = ConfigFile.new()
-	var err = config.load(GAME_SAVE_FILE_PATH)
-	if err == OK:
-		has_loaded = true
-		lifetime_score = config.get_value(SECTION_SCORE, KEY_LIFETIME)
-		level_1_high_score = config.get_value(SECTION_SCORE, KEY_LEVEL_1)
+var weapons: Array[Weapon.Type] = []
+
+
+func _ready() -> void:
+	init_unlocks(GameSave.lifetime_score)
+	
+	GameSave.loaded.connect(on_game_save_loaded)
+
+
+func on_game_save_loaded() -> void:
+	init_unlocks(GameSave.lifetime_score)
+
+
+func init_unlocks(score: int) -> void:
+	weapons.clear()
+	weapons.append(Weapon.Type.PISTOL)
+	if score > 10:
+		weapons.append(Weapon.Type.DUAL_PISTOLS)
+	if score > 20:
+		weapons.append(Weapon.Type.REVOLVER)

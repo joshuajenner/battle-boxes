@@ -11,6 +11,7 @@ script = ExtResource("1_711mg")
 bullet_scene = ExtResource("2_hfse1")
 muzzle = NodePath("Muzzle")
 weapon_audio_player = NodePath("AudioStreamPlayer2D")
+type = 2
 fire_rate_timer = NodePath("FireRateTimer")
 fire_rate_sec = 0.4
 is_directional = true

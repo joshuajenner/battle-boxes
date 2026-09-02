@@ -176,9 +176,10 @@ _data = {
 &"walk_right": SubResource("Animation_g1dw6")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=241208287 node_paths=PackedStringArray("weapon")]
+[node name="Player" type="CharacterBody2D" unique_id=241208287 node_paths=PackedStringArray("weapon_parent", "weapon")]
 collision_mask = 4
 script = ExtResource("1_rkbax")
+weapon_parent = NodePath("Weapon")
 weapon = NodePath("Weapon/Pistol")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1640831766]
