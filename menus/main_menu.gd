@@ -12,7 +12,7 @@ func _ready() -> void:
 	settings_button.pressed.connect(on_settings_button_pressed)
 	credits_button.pressed.connect(on_credits_button_pressed)
 	quit_button.pressed.connect(on_quit_button_pressed)
-	GameData.load_game_data()
+	GameSave.load_save()
 
 
 func on_play_button_pressed() -> void:

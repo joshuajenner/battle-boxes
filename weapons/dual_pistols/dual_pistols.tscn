@@ -1,21 +1,156 @@
 [gd_scene format=3 uid="uid://dgn1vll41vjy5"]
 
 [ext_resource type="Script" uid="uid://bhqy4us7up2hw" path="res://weapons/dual_pistols/dual_pistols.gd" id="1_8pc1v"]
-[ext_resource type="Texture2D" uid="uid://cyb4667rmjoes" path="res://weapons/dual_pistols/dual_pistol.png" id="2_c6cfs"]
 [ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_l6hpq"]
+[ext_resource type="AudioStream" uid="uid://2d0b6iybysfj" path="res://assets/sfx/pistol/SFX_explosionShort2.wav" id="4_bakwr"]
+[ext_resource type="Texture2D" uid="uid://b70ypevh2lmv3" path="res://weapons/pistol/pistol.png" id="4_rkeyl"]
+[ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_2vm27"]
 
-[node name="DualPistols" type="Node2D" unique_id=167784858 node_paths=PackedStringArray("muzzle_right", "muzzle_left", "fire_rate_timer")]
+[sub_resource type="Animation" id="Animation_2vm27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Right:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bakwr"]
+resource_name = "fire"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Right:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8.0, 9.0, 10.0, 11.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10000001, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -0.17453292519943295, -0.08726646259971647, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vm27"]
+_data = {
+&"RESET": SubResource("Animation_2vm27"),
+&"fire": SubResource("Animation_bakwr")
+}
+
+[sub_resource type="Animation" id="Animation_rkeyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-11.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l6hpq"]
+resource_name = "fire"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-8.0, -9.0, -10.0, -11.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10000001, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.17453292519943295, 0.08726646259971647, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkeyl"]
+_data = {
+&"RESET": SubResource("Animation_rkeyl"),
+&"fire": SubResource("Animation_l6hpq")
+}
+
+[node name="DualPistols" type="Node2D" unique_id=167784858 node_paths=PackedStringArray("muzzle_right", "muzzle_left", "right_animation_player", "left_animation_player", "audio_player", "fire_rate_timer")]
 script = ExtResource("1_8pc1v")
 bullet_scene = ExtResource("2_l6hpq")
 muzzle_right = NodePath("MuzzleRight")
 muzzle_left = NodePath("MuzzleLeft")
+right_animation_player = NodePath("RightAnimationPlayer")
+left_animation_player = NodePath("LeftAnimationPlayer")
+audio_player = NodePath("WeaponAudioPlayer")
 type = 1
 fire_rate_timer = NodePath("FireRateTimer")
-fire_rate_sec = 0.15
+fire_rate_sec = 0.2
 damage = 5
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1943643327]
-texture = ExtResource("2_c6cfs")
+[node name="Right" type="Sprite2D" parent="." unique_id=1346748621]
+position = Vector2(0, 2)
+texture = ExtResource("4_rkeyl")
+offset = Vector2(11, 0)
+
+[node name="Left" type="Sprite2D" parent="." unique_id=1704814087]
+position = Vector2(0, 2)
+texture = ExtResource("4_rkeyl")
+offset = Vector2(-11, 0)
+flip_h = true
 
 [node name="MuzzleRight" type="Marker2D" parent="." unique_id=1497103546]
 position = Vector2(16, 0)
@@ -24,3 +159,15 @@ position = Vector2(16, 0)
 position = Vector2(-16, 0)
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1584703609]
+
+[node name="RightAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1292569472]
+libraries/ = SubResource("AnimationLibrary_2vm27")
+
+[node name="LeftAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1885707670]
+libraries/ = SubResource("AnimationLibrary_rkeyl")
+
+[node name="WeaponAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=898090896]
+stream = ExtResource("4_bakwr")
+max_polyphony = 20
+script = ExtResource("5_2vm27")
+pitch_scale_min = 0.95
