@@ -33,7 +33,6 @@ func on_game_save_loaded() -> void:
 func init_unlocks(score: int) -> void:
 	weapons.clear()
 	weapons.append(Weapon.Type.PISTOL)
+	weapons.append(Weapon.Type.DUAL_PISTOLS)
 	if score > 10:
-		weapons.append(Weapon.Type.DUAL_PISTOLS)
-	if score > 20:
 		weapons.append(Weapon.Type.REVOLVER)
