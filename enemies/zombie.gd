@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var body_sprite: Sprite2D = $BodySprite
 @onready var hit_flash_player: AnimationPlayer = $HitFlashPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var health_component: HealthComponent
 
@@ -23,12 +24,26 @@ func _physics_process(delta: float) -> void:
 		set_direction(-direction)
 	
 	velocity.x = direction * move_speed
+	handle_animation()
 	move_and_slide()
+
+
+func handle_animation() -> void:
+	if direction >= 0:
+		if is_on_floor():
+			animation_player.play("walk_right")
+		else:
+			animation_player.play("fall_right")
+	else:
+		if is_on_floor():
+			animation_player.play("walk_left")
+		else:
+			animation_player.play("fall_left")
+
 
 
 func set_direction(value: int) -> void:
 	direction = value
-	body_sprite.flip_h = value == -1
 
 
 func _on_hurt_box_component_projectile_entered(damage: int) -> void:
