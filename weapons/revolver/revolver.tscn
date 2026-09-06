@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_hfse1"]
 [ext_resource type="Texture2D" uid="uid://cyg6ddnt38r4k" path="res://weapons/revolver/revolver.png" id="2_km6dq"]
 [ext_resource type="Texture2D" uid="uid://bs3e5s2n02knd" path="res://player/left_hand.png" id="4_5h0lk"]
-[ext_resource type="AudioStream" uid="uid://bw30uygmjsl3f" path="res://assets/sfx/pistol/Retro Gun SingleShot 01.wav" id="4_b7g5s"]
 [ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_5h0lk"]
+[ext_resource type="AudioStream" uid="uid://2d0b6iybysfj" path="res://assets/sfx/pistol/SFX_explosionShort2.wav" id="5_ev28f"]
 
 [sub_resource type="Animation" id="Animation_5h0lk"]
 length = 0.001
@@ -57,10 +57,10 @@ tracks/0/path = NodePath("RightHand:offset:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [11.0, 10.0, 11.0, 12.0, 13.0]
+"values": [9.0, 11.0, 12.0, 13.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -69,10 +69,10 @@ tracks/1/path = NodePath("RightHand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0.0, -0.5235987755982988, -0.6108652381980153, -0.3490658503988659, -0.08726646259971647, 0.0]
+"values": [-0.5235987755982988, -0.6981317007977318, -0.3490658503988659, -0.17453292519943295, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -115,12 +115,12 @@ position = Vector2(-9, 3)
 texture = ExtResource("4_5h0lk")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1564062056]
-position = Vector2(21, 0)
+position = Vector2(20, 0)
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=345720368]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1313625466]
-stream = ExtResource("4_b7g5s")
+stream = ExtResource("5_ev28f")
 max_polyphony = 6
 bus = &"GameSFX"
 script = ExtResource("5_5h0lk")
