@@ -17,6 +17,9 @@ func _ready() -> void:
 	health_component.health_depleted.connect(on_health_component_health_depleted)
 
 
+func set_direction(value: int) -> void:
+	direction = value
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta

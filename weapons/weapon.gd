@@ -5,7 +5,8 @@ extends Node2D
 enum Type {
 	PISTOL,
 	DUAL_PISTOLS,
-	REVOLVER
+	REVOLVER,
+	MACHINE_GUN,
 }
 
 @export var type: Type

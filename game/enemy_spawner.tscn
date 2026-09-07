@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://kek5od7i57da" path="res://game/enemy_spawner.gd" id="1_7cpu4"]
 
-[node name="EnemySpawner" type="Node2D" unique_id=1002635223 node_paths=PackedStringArray("timer")]
+[node name="EnemySpawner" type="Node2D" unique_id=1002635223 node_paths=PackedStringArray("spawn_timer", "triple_timer")]
 script = ExtResource("1_7cpu4")
-timer = NodePath("Timer")
+spawn_timer = NodePath("SpawnTimer")
+triple_timer = NodePath("TripleTimer")
 
-[node name="Timer" type="Timer" parent="." unique_id=819338391]
+[node name="SpawnTimer" type="Timer" parent="." unique_id=819338391]
+one_shot = true
+
+[node name="TripleTimer" type="Timer" parent="." unique_id=1592512452]
 one_shot = true

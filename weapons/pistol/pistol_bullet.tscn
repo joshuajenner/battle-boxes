@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpykyiq83n7vr"]
 
-[ext_resource type="Script" uid="uid://dgtnf18hbvw3" path="res://weapons/pistol/pistol_bullet.gd" id="1_cv0qh"]
+[ext_resource type="Script" uid="uid://dgtnf18hbvw3" path="res://weapons/bullet.gd" id="1_cv0qh"]
 [ext_resource type="Texture2D" uid="uid://cl51clcknvaig" path="res://weapons/pistol/bullet.png" id="2_cv0qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pmmp"]
@@ -18,6 +18,3 @@ shape = SubResource("RectangleShape2D_4pmmp")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=807111673]
 texture = ExtResource("2_cv0qh")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

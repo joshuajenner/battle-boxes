@@ -14,8 +14,8 @@ func fire() -> void:
 	var bullet_left: Node2D = bullet_scene.instantiate()
 	bullet_right.damage = damage
 	bullet_left.damage = damage
-	bullet_right.direction_x = 1
-	bullet_left.direction_x = -1
+	bullet_right.direction.x = 1
+	bullet_left.direction.x = -1
 	bullet_right.global_position = muzzle_right.global_position
 	bullet_left.global_position = muzzle_left.global_position
 	right_animation_player.play("fire")

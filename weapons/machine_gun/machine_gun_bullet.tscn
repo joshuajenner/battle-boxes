@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bu32nej3j3eqe"]
+
+[ext_resource type="Script" uid="uid://dgtnf18hbvw3" path="res://weapons/bullet.gd" id="1_3uet5"]
+[ext_resource type="Texture2D" uid="uid://dyegqcqfvsubl" path="res://weapons/machine_gun/machine_gun_bullet.png" id="1_hcqnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cuen"]
+size = Vector2(7, 6)
+
+[node name="MachineGunBullet" type="Area2D" unique_id=2143971822]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_3uet5")
+speed = 400.0
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1444894161]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_8cuen")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1729388025]
+texture = ExtResource("1_hcqnp")

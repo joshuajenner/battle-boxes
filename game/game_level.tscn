@@ -57,7 +57,6 @@ process_mode = 1
 
 [node name="Spawner" parent="Objects" unique_id=1002635223 instance=ExtResource("2_x6325")]
 position = Vector2(0, -192)
-spawn_cooldown_sec = 3.0
 
 [node name="Player" parent="Objects" unique_id=241208287 instance=ExtResource("3_egnn0")]
 position = Vector2(0, 60)
