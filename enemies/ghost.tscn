@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://bc51dwypandwn"]
+
+[ext_resource type="Script" uid="uid://drsyu8m3swcxq" path="res://enemies/ghost.gd" id="1_qwllq"]
+[ext_resource type="Shader" uid="uid://cmvui5ko5vbpi" path="res://shaders/hitflash.gdshader" id="1_rbwoc"]
+[ext_resource type="Texture2D" uid="uid://27vxipktkb0e" path="res://enemies/ghost.png" id="1_uk6m1"]
+[ext_resource type="Texture2D" uid="uid://dn2isjt8ynhcw" path="res://enemies/ghost_light.png" id="2_jyll1"]
+[ext_resource type="Script" uid="uid://cgyrx4cstwuk1" path="res://components/hurt_box_component.gd" id="4_34o1m"]
+[ext_resource type="PackedScene" uid="uid://hx6b63ylctdv" path="res://components/health_component.tscn" id="5_mg3bh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ci5kr"]
+resource_local_to_scene = true
+shader = ExtResource("1_rbwoc")
+shader_parameter/value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3vq6"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34o1m"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_qwllq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jyll1"]
+resource_name = "flicker"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwllq"]
+_data = {
+&"RESET": SubResource("Animation_qwllq"),
+&"flicker": SubResource("Animation_jyll1")
+}
+
+[sub_resource type="Animation" id="Animation_rbwoc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mg3bh"]
+resource_name = "flash"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.75, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbwoc"]
+_data = {
+&"RESET": SubResource("Animation_rbwoc"),
+&"flash": SubResource("Animation_mg3bh")
+}
+
+[node name="Ghost" type="CharacterBody2D" unique_id=1764935934 node_paths=PackedStringArray("body_sprite", "bounce_timer", "hurt_box_component", "health_component", "hit_flash_player") groups=["Enemy"]]
+material = SubResource("ShaderMaterial_ci5kr")
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_qwllq")
+body_sprite = NodePath("Body")
+bounce_timer = NodePath("BounceTimer")
+hurt_box_component = NodePath("HurtBoxComponent")
+health_component = NodePath("HealthComponent")
+hit_flash_player = NodePath("HitFlashPlayer")
+
+[node name="Light" type="Sprite2D" parent="." unique_id=684574724]
+modulate = Color(1, 1, 1, 0.29411766)
+texture = ExtResource("2_jyll1")
+offset = Vector2(-0.5, 0.5)
+hframes = 2
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1099083362]
+use_parent_material = true
+texture = ExtResource("1_uk6m1")
+offset = Vector2(-0.5, 0.5)
+hframes = 2
+
+[node name="NavBox" type="CollisionShape2D" parent="." unique_id=933624641]
+shape = SubResource("CircleShape2D_c3vq6")
+
+[node name="HurtBoxComponent" type="Area2D" parent="." unique_id=317251987]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("4_34o1m")
+metadata/_custom_type_script = "uid://cgyrx4cstwuk1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" unique_id=1533820153]
+shape = SubResource("CircleShape2D_34o1m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=816250040]
+libraries/ = SubResource("AnimationLibrary_qwllq")
+autoplay = &"flicker"
+
+[node name="HitFlashPlayer" type="AnimationPlayer" parent="." unique_id=2138868077]
+libraries/ = SubResource("AnimationLibrary_rbwoc")
+
+[node name="BounceTimer" type="Timer" parent="." unique_id=1644595097]
+one_shot = true
+
+[node name="HealthComponent" parent="." unique_id=633740388 instance=ExtResource("5_mg3bh")]
+max_health = 10

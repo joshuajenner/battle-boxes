@@ -1,26 +1,26 @@
-[gd_scene format=3 uid="uid://2gliggdm8ayc"]
+[gd_scene format=3 uid="uid://cayvgrrkscxrh"]
 
-[ext_resource type="Shader" uid="uid://cmvui5ko5vbpi" path="res://shaders/hitflash.gdshader" id="1_jv3fx"]
-[ext_resource type="Script" uid="uid://cb3nqjp7fpq06" path="res://enemies/zombie.gd" id="1_uur8n"]
-[ext_resource type="Texture2D" uid="uid://cpyuk5ttwqa06" path="res://enemies/zombie.png" id="2_ujw3w"]
-[ext_resource type="PackedScene" uid="uid://xore34aqydk4" path="res://components/hurt_box_component.tscn" id="3_c8iql"]
-[ext_resource type="Texture2D" uid="uid://om6fklx1b1a5" path="res://enemies/zombie_hand.png" id="3_xiyom"]
-[ext_resource type="PackedScene" uid="uid://hx6b63ylctdv" path="res://components/health_component.tscn" id="4_1p8ux"]
+[ext_resource type="Shader" uid="uid://cmvui5ko5vbpi" path="res://shaders/hitflash.gdshader" id="1_2vclf"]
+[ext_resource type="Texture2D" uid="uid://dpkq3o1kr2s0q" path="res://enemies/big_zombie.png" id="1_cf1oa"]
+[ext_resource type="Script" uid="uid://cb3nqjp7fpq06" path="res://enemies/zombie.gd" id="1_ea0g6"]
+[ext_resource type="Script" uid="uid://d1tge50qplb8u" path="res://components/health_component.gd" id="3_784ki"]
+[ext_resource type="Texture2D" uid="uid://cf53utukhj7gy" path="res://enemies/big_zombie_hand.png" id="4_fbilb"]
+[ext_resource type="PackedScene" uid="uid://xore34aqydk4" path="res://components/hurt_box_component.tscn" id="5_vunt0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lnix"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vunt0"]
 resource_local_to_scene = true
-shader = ExtResource("1_jv3fx")
+shader = ExtResource("1_2vclf")
 shader_parameter/value = 0.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahg1b"]
-radius = 5.0
-height = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j5wvq"]
+radius = 6.0
+height = 32.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8iql"]
-radius = 5.0
-height = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vunt0"]
+radius = 6.0
+height = 32.0
 
-[sub_resource type="Animation" id="Animation_ujw3w"]
+[sub_resource type="Animation" id="Animation_j7aio"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_c8iql"]
+[sub_resource type="Animation" id="Animation_fbilb"]
 resource_name = "flash"
 length = 0.1
 tracks/0/type = "value"
@@ -51,18 +51,18 @@ tracks/0/keys = {
 "values": [0.75, 0.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1p8ux"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7aio"]
 _data = {
-&"RESET": SubResource("Animation_ujw3w"),
-&"flash": SubResource("Animation_c8iql")
+&"RESET": SubResource("Animation_j7aio"),
+&"flash": SubResource("Animation_fbilb")
 }
 
-[sub_resource type="Animation" id="Animation_1p8ux"]
+[sub_resource type="Animation" id="Animation_ea0g6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,59 +74,36 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hands:position")
+tracks/1/path = NodePath("Hands:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(0, 0)]
+"values": [-1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hands:scale:x")
+tracks/2/path = NodePath("Hands:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hands/LeftHand:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5, 2)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Hands:position:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_2jysd"]
+[sub_resource type="Animation" id="Animation_2vclf"]
 resource_name = "fall_left"
 length = 0.1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -160,13 +137,14 @@ tracks/2/keys = {
 "values": [-3.0]
 }
 
-[sub_resource type="Animation" id="Animation_6lnix"]
+[sub_resource type="Animation" id="Animation_vunt0"]
 resource_name = "fall_right"
 length = 0.1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -200,18 +178,18 @@ tracks/2/keys = {
 "values": [-3.0]
 }
 
-[sub_resource type="Animation" id="Animation_xiyom"]
+[sub_resource type="Animation" id="Animation_784ki"]
 resource_name = "walk_left"
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.65),
+"times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [16, 23]
@@ -223,7 +201,7 @@ tracks/1/path = NodePath("Hands:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.049999997, 0.24999999, 0.39999998, 0.6),
+"times": PackedFloat32Array(0.050000004, 0.25, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1)]
@@ -235,7 +213,7 @@ tracks/2/path = NodePath("Hands:scale:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(-7.450581e-09, 0.7),
+"times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-1.0, -1.0]
@@ -243,28 +221,28 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hands/LeftHand:position")
+tracks/3/path = NodePath("Hands/Left:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 0.20000002, 0.45, 0.55),
+"times": PackedFloat32Array(0.09999999, 0.2, 0.45, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(5, 2), Vector2(5, 1), Vector2(5, 2), Vector2(5, 1)]
+"values": [Vector2(7, 2), Vector2(7, 1), Vector2(7, 2), Vector2(7, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_jv3fx"]
+[sub_resource type="Animation" id="Animation_cf1oa"]
 resource_name = "walk_right"
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.65),
+"times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [8, 15]
@@ -276,7 +254,7 @@ tracks/1/path = NodePath("Hands:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.25, 0.4, 0.6),
+"times": PackedFloat32Array(0.050000004, 0.25, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1)]
@@ -296,72 +274,73 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hands/LeftHand:position")
+tracks/3/path = NodePath("Hands/Left:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.099999994, 0.20000002, 0.45, 0.55),
+"times": PackedFloat32Array(0.1, 0.20000002, 0.45, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(5, 2), Vector2(5, 1), Vector2(5, 2), Vector2(5, 1)]
+"values": [Vector2(7, 2), Vector2(7, 1), Vector2(7, 2), Vector2(7, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6lnix"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ea0g6"]
 _data = {
-&"RESET": SubResource("Animation_1p8ux"),
-&"fall_left": SubResource("Animation_2jysd"),
-&"fall_right": SubResource("Animation_6lnix"),
-&"walk_left": SubResource("Animation_xiyom"),
-&"walk_right": SubResource("Animation_jv3fx")
+&"RESET": SubResource("Animation_ea0g6"),
+&"fall_left": SubResource("Animation_2vclf"),
+&"fall_right": SubResource("Animation_vunt0"),
+&"walk_left": SubResource("Animation_784ki"),
+&"walk_right": SubResource("Animation_cf1oa")
 }
 
-[node name="Zombie" type="CharacterBody2D" unique_id=807111278 node_paths=PackedStringArray("hurt_box_component", "health_component") groups=["Enemy"]]
-material = SubResource("ShaderMaterial_6lnix")
+[node name="BigZombie" type="CharacterBody2D" unique_id=1530755228 node_paths=PackedStringArray("hurt_box_component", "health_component") groups=["Enemy"]]
+material = SubResource("ShaderMaterial_vunt0")
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_uur8n")
+script = ExtResource("1_ea0g6")
 hurt_box_component = NodePath("HurtBoxComponent")
 health_component = NodePath("HealthComponent")
 
-[node name="BodySprite" type="Sprite2D" parent="." unique_id=55146116]
-modulate = Color(1, 0.2941177, 0.2941177, 1)
+[node name="Body" type="Sprite2D" parent="." unique_id=1791890782]
 use_parent_material = true
-texture = ExtResource("2_ujw3w")
+position = Vector2(0, -1)
+texture = ExtResource("1_cf1oa")
 hframes = 8
 vframes = 3
 
-[node name="Hands" type="Node2D" parent="." unique_id=210169313]
+[node name="Hands" type="Node2D" parent="." unique_id=1702265252]
 use_parent_material = true
+scale = Vector2(-1, 1)
 
-[node name="RightHand" type="Sprite2D" parent="Hands" unique_id=903242403]
+[node name="Right" type="Sprite2D" parent="Hands" unique_id=1792635903]
 use_parent_material = true
-position = Vector2(10, -1)
-rotation = -1.5707964
-texture = ExtResource("3_xiyom")
+position = Vector2(12, -1)
+texture = ExtResource("4_fbilb")
 
-[node name="LeftHand" type="Sprite2D" parent="Hands" unique_id=1507819492]
+[node name="Left" type="Sprite2D" parent="Hands" unique_id=626023016]
 use_parent_material = true
-position = Vector2(5, 2)
-rotation = -1.5707964
-texture = ExtResource("3_xiyom")
+position = Vector2(7, 2)
+texture = ExtResource("4_fbilb")
 
-[node name="NavBox" type="CollisionShape2D" parent="." unique_id=1134526422]
+[node name="NavBox" type="CollisionShape2D" parent="." unique_id=1270982157]
 visible = false
-shape = SubResource("CapsuleShape2D_ahg1b")
+shape = SubResource("CapsuleShape2D_j5wvq")
 
-[node name="HurtBoxComponent" parent="." unique_id=641791970 instance=ExtResource("3_c8iql")]
+[node name="HurtBoxComponent" parent="." unique_id=641791970 instance=ExtResource("5_vunt0")]
 visible = false
 collision_layer = 2
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" unique_id=374155966]
-shape = SubResource("CapsuleShape2D_c8iql")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" unique_id=177260086]
+shape = SubResource("CapsuleShape2D_vunt0")
 
-[node name="HealthComponent" parent="." unique_id=633740388 instance=ExtResource("4_1p8ux")]
-max_health = 10
+[node name="HealthComponent" type="Node" parent="." unique_id=753187283]
+script = ExtResource("3_784ki")
+max_health = 20
+metadata/_custom_type_script = "uid://d1tge50qplb8u"
 
-[node name="HitFlashPlayer" type="AnimationPlayer" parent="." unique_id=713317947]
-libraries/ = SubResource("AnimationLibrary_1p8ux")
+[node name="HitFlashPlayer" type="AnimationPlayer" parent="." unique_id=4286761]
+libraries/ = SubResource("AnimationLibrary_j7aio")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=214511820]
-libraries/ = SubResource("AnimationLibrary_6lnix")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1800485262]
+libraries/ = SubResource("AnimationLibrary_ea0g6")

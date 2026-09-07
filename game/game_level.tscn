@@ -57,12 +57,13 @@ process_mode = 1
 
 [node name="Spawner" parent="Objects" unique_id=1002635223 instance=ExtResource("2_x6325")]
 position = Vector2(0, -192)
-spawn_cooldown_sec = 1.0
+spawn_cooldown_sec = 3.0
 
 [node name="Player" parent="Objects" unique_id=241208287 instance=ExtResource("3_egnn0")]
-position = Vector2(-73, 60)
+position = Vector2(0, 60)
 
 [node name="CrateSpawnAreas" type="Node2D" parent="." unique_id=1560927553]
+visible = false
 
 [node name="TopMiddle" type="Area2D" parent="CrateSpawnAreas" unique_id=134536191]
 
