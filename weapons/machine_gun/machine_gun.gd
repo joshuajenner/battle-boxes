@@ -18,4 +18,5 @@ func fire() -> void:
 			rng.randf_range(-bullet_spread, bullet_spread))
 	projetile_parent_node.add_child(bullet)
 	weapon_audio.play_random_pitch()
+	animation_player.stop()
 	animation_player.play("fire")

@@ -26,39 +26,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-
-[sub_resource type="Animation" id="Animation_8t03j"]
-resource_name = "dive_left"
-length = 0.1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [22]
-}
-
-[sub_resource type="Animation" id="Animation_2ieo8"]
-resource_name = "dive_right"
-length = 0.1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [14]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_boad6"]
@@ -77,6 +55,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_g6k8r"]
 resource_name = "idle_right"
@@ -93,6 +83,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_hg6s5"]
@@ -111,6 +113,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [23]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-2.0]
+}
 
 [sub_resource type="Animation" id="Animation_rgyib"]
 resource_name = "jump_right"
@@ -128,11 +142,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [15]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-2.0]
+}
 
 [sub_resource type="Animation" id="Animation_qjkh3"]
 resource_name = "walk_left"
 length = 0.6
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -145,11 +171,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [16, 23]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.2, 0.34999996, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -1.0, 0.0, -1.0]
+}
 
 [sub_resource type="Animation" id="Animation_g1dw6"]
 resource_name = "walk_right"
 length = 0.6
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -162,12 +200,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [8, 15]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.2, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -1.0, 0.0, -1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yw30f"]
 _data = {
 &"RESET": SubResource("Animation_yw30f"),
-&"dive_left": SubResource("Animation_8t03j"),
-&"dive_right": SubResource("Animation_2ieo8"),
 &"idle_left": SubResource("Animation_boad6"),
 &"idle_right": SubResource("Animation_g6k8r"),
 &"jump_left": SubResource("Animation_hg6s5"),
