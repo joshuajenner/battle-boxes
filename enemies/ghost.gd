@@ -60,7 +60,9 @@ func on_health_depleted() -> void:
 
 
 func on_bounce_timer_timeout() -> void:
-	if global_position.x > player.global_position.x:
-		move_direction = -1
-	else:
-		move_direction = 1
+	var y_diff: int = abs(global_position.y - player.global_position.y)
+	if y_diff < 32:
+		if global_position.x > player.global_position.x:
+			move_direction = -1
+		else:
+			move_direction = 1
