@@ -7,6 +7,7 @@ enum Type {
 	DUAL_PISTOLS,
 	REVOLVER,
 	MACHINE_GUN,
+	MINI_GUN,
 }
 
 @export var type: Type
