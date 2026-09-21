@@ -2,6 +2,8 @@ extends Projectile
 
 
 @onready var sprite: Sprite2D = $Sprite
+@export var is_piercing: bool = false
+@export var can_bounce: bool = false
 
 
 func _ready() -> void:
@@ -11,10 +13,19 @@ func _ready() -> void:
 
 
 func on_area_entered(area: Area2D) -> void:
-	if area is HurtBoxComponent:
+	if area is HurtBoxComponent and not is_piercing:
 		self.queue_free()
 
 
 func on_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
-		self.queue_free()
+		if can_bounce:
+			reverse_direction()
+			can_bounce = false
+		else:
+			self.queue_free()
+
+
+func reverse_direction() -> void:
+	sprite.flip_h = !sprite.flip_h
+	direction.x *= -1

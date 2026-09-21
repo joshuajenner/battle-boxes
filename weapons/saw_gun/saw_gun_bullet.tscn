@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://culyt5rk2o8ma"]
+
+[ext_resource type="Script" uid="uid://dgtnf18hbvw3" path="res://weapons/bullet.gd" id="1_kkr2t"]
+[ext_resource type="Texture2D" uid="uid://bwj8rgmgrey0m" path="res://weapons/saw_gun/saw_gun_bullet.png" id="2_f8fry"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0apms"]
+size = Vector2(10, 4)
+
+[node name="SawGunBullet" type="Area2D" unique_id=186630191]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_kkr2t")
+is_piercing = true
+can_bounce = true
+speed = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1263618592]
+shape = SubResource("RectangleShape2D_0apms")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1802571450]
+z_index = 2
+texture = ExtResource("2_f8fry")
