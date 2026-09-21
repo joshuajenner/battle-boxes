@@ -9,6 +9,7 @@ enum Type {
 	MACHINE_GUN,
 	MINI_GUN,
 	SAW_GUN,
+	SHOTGUN,
 }
 
 @export var type: Type
