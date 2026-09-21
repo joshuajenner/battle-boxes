@@ -18,6 +18,8 @@ func fire() -> void:
 	bullet_left.direction.x = -1
 	bullet_right.global_position = muzzle_right.global_position
 	bullet_left.global_position = muzzle_left.global_position
+	right_animation_player.stop()
+	left_animation_player.stop()
 	right_animation_player.play("fire")
 	left_animation_player.play("fire")
 	audio_player.play_random_pitch()

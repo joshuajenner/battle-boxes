@@ -14,4 +14,5 @@ func fire() -> void:
 	bullet.direction.x = direction_x
 	projetile_parent_node.add_child(bullet)
 	weapon_audio.play_random_pitch()
+	animation_player.stop()
 	animation_player.play("fire")

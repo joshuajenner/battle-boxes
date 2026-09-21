@@ -13,5 +13,6 @@ func fire() -> void:
 	bullet.global_position = muzzle.global_position
 	bullet.direction.x = direction_x
 	weapon_audio_player.play_random_pitch()
+	animation_player.stop()
 	animation_player.play("fire")
 	projetile_parent_node.add_child(bullet)
