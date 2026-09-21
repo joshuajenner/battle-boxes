@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8.0]
+"values": [7.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [6.0, 7.0, 8.0]
+"values": [5.0, 6.0, 7.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -70,7 +70,7 @@ _data = {
 [node name="MachineGun" type="Node2D" unique_id=429944730 node_paths=PackedStringArray("muzzle", "weapon_audio", "animation_player", "fire_rate_timer")]
 script = ExtResource("1_a31f2")
 bullet_scene = ExtResource("2_samat")
-muzzle = NodePath("Marker2D")
+muzzle = NodePath("Sprite2D/Marker2D")
 weapon_audio = NodePath("WeaponAudioPlayer")
 animation_player = NodePath("AnimationPlayer")
 bullet_spread = 0.05
@@ -82,10 +82,10 @@ damage = 5
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1642254042]
 z_index = 1
 texture = ExtResource("1_5kob4")
-offset = Vector2(8, 1)
+offset = Vector2(7, 1)
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=223977445]
-position = Vector2(22, -0.5)
+[node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=223977445]
+position = Vector2(19, -0.5)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1552852267]
