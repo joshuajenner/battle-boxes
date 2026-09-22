@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b70ypevh2lmv3" path="res://weapons/pistol/pistol.png" id="1_1ohd4"]
 [ext_resource type="Script" uid="uid://s38wlt0bfvfa" path="res://weapons/pistol/pistol.gd" id="1_5icxk"]
-[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_f30ot"]
+[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_f30ot"]
 [ext_resource type="AudioStream" uid="uid://2d0b6iybysfj" path="res://assets/sfx/pistol/SFX_explosionShort2.wav" id="4_ie44i"]
 [ext_resource type="Texture2D" uid="uid://bs3e5s2n02knd" path="res://player/left_hand.png" id="4_r7pee"]
 [ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_ie44i"]

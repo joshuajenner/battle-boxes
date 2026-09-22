@@ -1,12 +1,17 @@
-extends Projectile
+class_name Projectile
+extends Area2D
 
 
-@onready var sprite: Sprite2D = $Sprite
+@export var sprite: Sprite2D = null
+@export var despawn_timer: Timer = null
+
+@export var speed: float
 @export var is_piercing: bool = false
 @export var can_bounce: bool = false
-@export var can_despawn: bool = false
 
-@export var despawn_timer: Timer = null
+var damage: int = 0
+var direction := Vector2.ZERO
+
 
 func _ready() -> void:
 	sprite.flip_h = direction.x < 0
@@ -15,6 +20,25 @@ func _ready() -> void:
 		despawn_timer.timeout.connect(on_despawn_timer_timeout)
 	area_entered.connect(on_area_entered)
 	body_entered.connect(on_body_entered)
+	setup()
+
+
+func setup() -> void:
+	pass
+
+
+func _physics_process(delta: float) -> void:
+	position += direction * speed * delta
+
+
+func set_direction_x(x_value: int) -> void:
+	if x_value == 1 or x_value == -1:
+		direction.x = x_value
+
+
+func reverse_direction() -> void:
+	sprite.flip_h = !sprite.flip_h
+	direction.x *= -1
 
 
 func on_despawn_timer_timeout() -> void:
@@ -33,8 +57,3 @@ func on_body_entered(body: Node2D) -> void:
 			can_bounce = false
 		else:
 			self.queue_free()
-
-
-func reverse_direction() -> void:
-	sprite.flip_h = !sprite.flip_h
-	direction.x *= -1

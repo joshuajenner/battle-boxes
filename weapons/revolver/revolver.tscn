@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://yb8xf8h3it3q"]
 
 [ext_resource type="Script" uid="uid://dod6todtbnw0i" path="res://weapons/revolver/revolver.gd" id="1_711mg"]
-[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_hfse1"]
+[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_hfse1"]
 [ext_resource type="Texture2D" uid="uid://cyg6ddnt38r4k" path="res://weapons/revolver/revolver.png" id="2_km6dq"]
 [ext_resource type="Texture2D" uid="uid://bs3e5s2n02knd" path="res://player/left_hand.png" id="4_5h0lk"]
 [ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_5h0lk"]

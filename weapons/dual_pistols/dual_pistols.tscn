@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgn1vll41vjy5"]
 
 [ext_resource type="Script" uid="uid://bhqy4us7up2hw" path="res://weapons/dual_pistols/dual_pistols.gd" id="1_8pc1v"]
-[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/pistol/pistol_bullet.tscn" id="2_l6hpq"]
+[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_l6hpq"]
 [ext_resource type="AudioStream" uid="uid://2d0b6iybysfj" path="res://assets/sfx/pistol/SFX_explosionShort2.wav" id="4_bakwr"]
 [ext_resource type="Texture2D" uid="uid://b70ypevh2lmv3" path="res://weapons/pistol/pistol.png" id="4_rkeyl"]
 [ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_2vm27"]

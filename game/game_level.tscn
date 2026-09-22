@@ -59,7 +59,7 @@ process_mode = 1
 position = Vector2(0, -192)
 
 [node name="Player" parent="Objects" unique_id=241208287 instance=ExtResource("3_egnn0")]
-position = Vector2(0, 60)
+position = Vector2(-98, 60)
 
 [node name="CrateSpawnAreas" type="Node2D" parent="." unique_id=1560927553]
 visible = false

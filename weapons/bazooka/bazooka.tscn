@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://dp1vp6b2vf8dr"]
+
+[ext_resource type="Script" uid="uid://c3mtbaua50w2u" path="res://weapons/bazooka/bazooka.gd" id="1_6fc0l"]
+[ext_resource type="PackedScene" uid="uid://d3aqlrju1skun" path="res://weapons/bazooka/rocket.tscn" id="2_hnqsp"]
+[ext_resource type="Texture2D" uid="uid://0vcef1fjhg3f" path="res://weapons/bazooka/bazooka.png" id="3_nh7fv"]
+[ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="3_tpc0n"]
+
+[sub_resource type="Animation" id="Animation_nh7fv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4kdb6"]
+resource_name = "fire"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-3.0, -2.0, -1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-0.17453292519943295, -0.08726646259971647, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrcgg"]
+_data = {
+&"RESET": SubResource("Animation_nh7fv"),
+&"fire": SubResource("Animation_4kdb6")
+}
+
+[node name="Bazooka" type="Node2D" unique_id=751018391 node_paths=PackedStringArray("muzzle", "weapon_audio", "animation_player", "fire_rate_timer")]
+script = ExtResource("1_6fc0l")
+bullet_scene = ExtResource("2_hnqsp")
+muzzle = NodePath("Sprite2D/Marker2D")
+weapon_audio = NodePath("WeaponAudioPlayer")
+animation_player = NodePath("AnimationPlayer")
+type = 7
+fire_rate_timer = NodePath("FireRateTimer")
+fire_rate_sec = 0.8
+is_directional = true
+damage = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1108885650]
+z_index = 1
+texture = ExtResource("3_nh7fv")
+offset = Vector2(0, -2)
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=1610992473]
+position = Vector2(14, -3.5)
+
+[node name="WeaponAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1278825056]
+script = ExtResource("3_tpc0n")
+metadata/_custom_type_script = "uid://cggrismcy24x2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1431926193]
+libraries/ = SubResource("AnimationLibrary_vrcgg")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1008297157]

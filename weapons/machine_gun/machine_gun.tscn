@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dqqqfmlqrmfwg" path="res://weapons/machine_gun/machine_gun.png" id="1_5kob4"]
 [ext_resource type="Script" uid="uid://dvq8gibx1ct27" path="res://weapons/machine_gun/machine_gun.gd" id="1_a31f2"]
-[ext_resource type="PackedScene" uid="uid://bu32nej3j3eqe" path="res://weapons/machine_gun/machine_gun_bullet.tscn" id="2_samat"]
+[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_samat"]
 [ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="2_v81f0"]
 
 [sub_resource type="Animation" id="Animation_pnvnj"]

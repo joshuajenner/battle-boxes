@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyegqcqfvsubl"
-path="res://.godot/imported/machine_gun_bullet.png-274ecb0435e2422ffcc0393b6e597453.ctex"
+uid="uid://b5ljktoicjheu"
+path="res://.godot/imported/rocket.png-a6797e49ae67e991668a8b033522c6a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/machine_gun/machine_gun_bullet.png"
-dest_files=["res://.godot/imported/machine_gun_bullet.png-274ecb0435e2422ffcc0393b6e597453.ctex"]
+source_file="res://weapons/bazooka/rocket.png"
+dest_files=["res://.godot/imported/rocket.png-a6797e49ae67e991668a8b033522c6a8.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chobopdl5s42j" path="res://weapons/mini_gun/mini_gun.gd" id="1_cdpeb"]
 [ext_resource type="Texture2D" uid="uid://cxggvonirt6ho" path="res://weapons/mini_gun/mini_gun.png" id="2_ic84m"]
-[ext_resource type="PackedScene" uid="uid://xv2pcq22hw25" path="res://weapons/mini_gun/mini_gun_bullet.tscn" id="2_n4tyb"]
+[ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_n4tyb"]
 [ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="3_ic84m"]
 
 [sub_resource type="Animation" id="Animation_n4tyb"]
