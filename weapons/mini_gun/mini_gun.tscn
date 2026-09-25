@@ -34,7 +34,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_0qcuf"]
 resource_name = "fire"
-length = 0.05
+length = 0.060000000000000005
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -43,7 +43,7 @@ tracks/0/path = NodePath("Sprite2D:offset:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.05),
+"times": PackedFloat32Array(0, 0.03, 0.06),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [4.0, 5.0, 6.0]
@@ -55,7 +55,7 @@ tracks/1/path = NodePath("Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.05),
+"times": PackedFloat32Array(0, 0.03, 0.06),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.08726646259971647, -0.03490658503988659, 0.0]
@@ -74,11 +74,11 @@ bullet_scene = ExtResource("2_n4tyb")
 muzzle = NodePath("Sprite2D/Marker2D")
 weapon_audio = NodePath("WeaponAudioPlayer")
 animation_player = NodePath("AnimationPlayer")
-bullet_spread_up = 0.15
-bullet_spread_down = 0.05
+bullet_spread_up = 0.1
+bullet_spread_down = 0.02
 type = 4
 fire_rate_timer = NodePath("FireRateTimer")
-fire_rate_sec = 0.05
+fire_rate_sec = 0.03
 is_directional = true
 damage = 3
 

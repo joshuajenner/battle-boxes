@@ -17,4 +17,5 @@ speed = 400.0
 shape = SubResource("RectangleShape2D_4pmmp")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=807111673]
+z_index = 2
 texture = ExtResource("2_cv0qh")
