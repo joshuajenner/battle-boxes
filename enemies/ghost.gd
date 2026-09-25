@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var hurt_box_component: HurtBoxComponent
 @export var health_component: HealthComponent
 @export var hit_flash_player: AnimationPlayer
+@export var nav_box: CollisionShape2D
 
 const BOUNCE_TIME_SEC: float = 2
 
@@ -14,20 +15,26 @@ var move_direction: int = 1
 var gravity_ratio: float = 0.02
 var max_bounce_speed: float = -40
 var min_bounce_speed: float = -10
+var is_dead: bool = false
 
 var player: Player = null
-var rng = RandomNumberGenerator.new()
+var rng := RandomNumberGenerator.new()
 
 
 func _ready() -> void:
-	move_direction = pow(-1, randi() % 2)
+	move_direction = roundi(pow(-1, randi() % 2))
 	player = Player.current
 	bounce_timer.timeout.connect(on_bounce_timer_timeout)
-	hurt_box_component.projectile_entered.connect(on_hurt_box_projectile_entered)
+	hurt_box_component.damage_received.connect(on_hurt_box_damage_received)
 	health_component.health_depleted.connect(on_health_depleted)
 
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		velocity += get_gravity() * delta
+		move_and_slide()
+		return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * gravity_ratio * delta
 	else:
@@ -50,12 +57,18 @@ func handle_animation() -> void:
 		body_sprite.frame = 1
 
 
-func on_hurt_box_projectile_entered(damage: int) -> void:
+func on_hurt_box_damage_received(damage: int) -> void:
 	health_component.take_damage(damage)
 	hit_flash_player.play("flash")
 
 
 func on_health_depleted() -> void:
+	is_dead = true
+	move_direction = -move_direction
+	velocity.y = -200
+	nav_box.set_deferred("disabled", true)
+	bounce_timer.stop()
+	await get_tree().create_timer(5).timeout
 	self.queue_free()
 
 

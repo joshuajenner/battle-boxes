@@ -94,7 +94,7 @@ _data = {
 &"flash": SubResource("Animation_mg3bh")
 }
 
-[node name="Ghost" type="CharacterBody2D" unique_id=1764935934 node_paths=PackedStringArray("body_sprite", "bounce_timer", "hurt_box_component", "health_component", "hit_flash_player") groups=["Enemy"]]
+[node name="Ghost" type="CharacterBody2D" unique_id=1764935934 node_paths=PackedStringArray("body_sprite", "bounce_timer", "hurt_box_component", "health_component", "hit_flash_player", "nav_box") groups=["Enemy"]]
 material = SubResource("ShaderMaterial_ci5kr")
 collision_layer = 2
 collision_mask = 4
@@ -104,6 +104,7 @@ bounce_timer = NodePath("BounceTimer")
 hurt_box_component = NodePath("HurtBoxComponent")
 health_component = NodePath("HealthComponent")
 hit_flash_player = NodePath("HitFlashPlayer")
+nav_box = NodePath("NavBox")
 
 [node name="Light" type="Sprite2D" parent="." unique_id=684574724]
 modulate = Color(1, 1, 1, 0.29411766)
@@ -141,3 +142,5 @@ one_shot = true
 
 [node name="HealthComponent" parent="." unique_id=633740388 instance=ExtResource("5_mg3bh")]
 max_health = 10
+
+[node name="AfterDeathTimer" type="Timer" parent="." unique_id=972880375]

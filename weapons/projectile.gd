@@ -1,5 +1,5 @@
 class_name Projectile
-extends Area2D
+extends HitBoxComponent
 
 
 @export var sprite: Sprite2D = null
@@ -9,7 +9,7 @@ extends Area2D
 @export var is_piercing: bool = false
 @export var can_bounce: bool = false
 
-var damage: int = 0
+
 var direction := Vector2.ZERO
 
 

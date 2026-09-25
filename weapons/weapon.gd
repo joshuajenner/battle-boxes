@@ -1,7 +1,6 @@
 class_name Weapon
 extends Node2D
 
-
 enum Type {
 	PISTOL,
 	DUAL_PISTOLS,
@@ -11,6 +10,7 @@ enum Type {
 	SAW_GUN,
 	SHOTGUN,
 	BAZOOKA,
+	KNIFE,
 }
 
 @export var type: Type
@@ -20,12 +20,17 @@ enum Type {
 @export var damage: int
 
 var projetile_parent_node: Node2D
-var direction_x: float
+var direction_x: int
 
 
 func _ready() -> void:
 	fire_rate_timer.autostart = false
 	fire_rate_timer.one_shot = true
+	setup()
+
+
+func setup() -> void:
+	pass
 
 
 func _physics_process(_delta: float) -> void:

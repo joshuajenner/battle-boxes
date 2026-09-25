@@ -344,3 +344,5 @@ libraries/ = SubResource("AnimationLibrary_j7aio")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1800485262]
 libraries/ = SubResource("AnimationLibrary_ea0g6")
+
+[node name="DeleteAfterDeath" type="Timer" parent="." unique_id=737340049]

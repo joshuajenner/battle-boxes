@@ -1,6 +1,5 @@
 extends Weapon
 
-
 @export var bullet_scene: PackedScene
 @export var muzzle: Marker2D
 @export var weapon_audio: WeaponAudioPlayer

@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://dbnorle2b8pr4"]
+
+[ext_resource type="Script" uid="uid://b2lsmw4lj6pdb" path="res://weapons/knife/knife.gd" id="1_h3j4c"]
+[ext_resource type="Texture2D" uid="uid://4txk4c6tvlgu" path="res://weapons/knife/knife.png" id="2_iqiin"]
+[ext_resource type="Texture2D" uid="uid://bs3e5s2n02knd" path="res://player/left_hand.png" id="3_yhxna"]
+[ext_resource type="Script" uid="uid://d0yk430e14u44" path="res://components/hit_box_component.gd" id="4_bc3do"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc3do"]
+size = Vector2(13, 8)
+
+[sub_resource type="Animation" id="Animation_2a3bp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EmptyHand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/HitBoxComponent/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bc3do"]
+resource_name = "fire"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.3, 0.35, 0.4, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4, 0), Vector2(16, 0), Vector2(14, 0), Vector2(4, 2), Vector2(0, 3), Vector2(-6, 3), Vector2(-8, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.35, 0.4, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [-3.141592653589793, -2.530727415391778, -1.5707963267948966, -0.7853981633974483, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EmptyHand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.14999998, 0.3, 0.35, 0.4, 0.45000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2, -2), Vector2(14, -2), Vector2(12, -2), Vector2(6, -3), Vector2(7, -1), Vector2(8, 0), Vector2(8, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/HitBoxComponent/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_o76be"]
+resource_name = "fire_2"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.35, 0.39999998, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(4, 0), Vector2(14, 0), Vector2(13, 0), Vector2(4, 2), Vector2(0, 3), Vector2(-6, 3), Vector2(-8, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.39999998, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-1.5707963267948966, -3.141592653589793, -2.530727415391778, -1.5707963267948966, -0.7853981633974483, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EmptyHand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.19999999, 0.35, 0.39999998, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(7, -3), Vector2(2, -2), Vector2(12, -2), Vector2(11, -2), Vector2(6, -3), Vector2(7, -1), Vector2(8, 0), Vector2(8, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/HitBoxComponent/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2a3bp"]
+_data = {
+&"RESET": SubResource("Animation_2a3bp"),
+&"fire": SubResource("Animation_bc3do"),
+&"fire_2": SubResource("Animation_o76be")
+}
+
+[node name="Knife" type="Node2D" unique_id=102415691 node_paths=PackedStringArray("animation_player", "hit_box", "fire_rate_timer")]
+z_index = 1
+script = ExtResource("1_h3j4c")
+animation_player = NodePath("AnimationPlayer")
+hit_box = NodePath("Body/HitBoxComponent")
+type = 8
+fire_rate_timer = NodePath("Timer")
+fire_rate_sec = 0.3
+is_directional = true
+damage = 10
+
+[node name="Body" type="Node2D" parent="." unique_id=1985988431]
+position = Vector2(-8, 4)
+
+[node name="HitBoxComponent" type="Area2D" parent="Body" unique_id=214234178]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("4_bc3do")
+has_knockback = true
+metadata/_custom_type_script = "uid://d0yk430e14u44"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitBoxComponent" unique_id=193398049]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_bc3do")
+disabled = true
+
+[node name="Sprite" type="Sprite2D" parent="Body" unique_id=957830382]
+texture = ExtResource("2_iqiin")
+
+[node name="EmptyHand" type="Sprite2D" parent="." unique_id=503121705]
+position = Vector2(8, 1)
+rotation = -1.5707964
+texture = ExtResource("3_yhxna")
+flip_h = true
+
+[node name="Timer" type="Timer" parent="." unique_id=147930130]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1948065231]
+libraries/ = SubResource("AnimationLibrary_2a3bp")

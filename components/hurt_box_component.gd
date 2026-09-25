@@ -1,8 +1,8 @@
 class_name HurtBoxComponent
 extends Area2D
 
-
-signal projectile_entered(damage: int)
+signal damage_received(damage: int)
+signal knockback_received(direction_x: float)
 
 
 func _ready() -> void:
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func on_area_entered(area: Area2D) -> void:
-	if area is Projectile:
-		projectile_entered.emit(area.damage)
-	elif area is HitBoxComponent:
-		projectile_entered.emit(area.damage)
+	if area is HitBoxComponent:
+		damage_received.emit(area.damage)
+		if area.has_knockback:
+			knockback_received.emit(area.knockback_direction_x)

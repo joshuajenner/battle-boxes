@@ -34,6 +34,10 @@ const WEAPONS_LIST: Dictionary = {
 		"name": "Bazooka",
 		"path": "uid://dp1vp6b2vf8dr"
 	},
+	Weapon.Type.KNIFE: {
+		"name": "Knife",
+		"path": "uid://dbnorle2b8pr4"
+	},
 }
 
 
@@ -67,3 +71,5 @@ func init_unlocks(score: int) -> void:
 		weapons.append(Weapon.Type.SHOTGUN)
 	if score > 60:
 		weapons.append(Weapon.Type.BAZOOKA)
+	if score > 70:
+		weapons.append(Weapon.Type.KNIFE)

@@ -3,10 +3,9 @@ extends CharacterBody2D
 
 signal died()
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @export var weapon_parent: Node2D
 @export var weapon: Weapon
+@export var animation_player: AnimationPlayer
 
 var move_speed: float = 180
 var jump_speed: float = -400
@@ -36,7 +35,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	var input_direction: float = Input.get_axis("move_left", "move_right")
-	direction_x = input_direction if input_direction != 0 else direction_x
+	if input_direction != 0:
+		direction_x = input_direction
 	weapon.set_direction(direction_x)
 	velocity.x = input_direction * move_speed
 	move_and_slide()
