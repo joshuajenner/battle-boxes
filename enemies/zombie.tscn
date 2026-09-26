@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cpyuk5ttwqa06" path="res://enemies/zombie.png" id="2_ujw3w"]
 [ext_resource type="PackedScene" uid="uid://xore34aqydk4" path="res://components/hurt_box_component.tscn" id="3_c8iql"]
 [ext_resource type="Texture2D" uid="uid://om6fklx1b1a5" path="res://enemies/zombie_hand.png" id="3_xiyom"]
-[ext_resource type="PackedScene" uid="uid://hx6b63ylctdv" path="res://components/health_component.tscn" id="4_1p8ux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6lnix"]
 resource_local_to_scene = true
 shader = ExtResource("1_jv3fx")
-shader_parameter/value = 0.0
+shader_parameter/colour = Vector3(0, 0, 0)
+shader_parameter/alpha = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahg1b"]
 radius = 5.0
@@ -25,7 +25,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/value")
+tracks/0/path = NodePath(".:material:shader_parameter/alpha")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,25 +36,66 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_c8iql"]
-resource_name = "flash"
+resource_name = "damage"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/value")
+tracks/0/path = NodePath(".:material:shader_parameter/colour")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(1, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0.75, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_e1y6x"]
+resource_name = "die"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/colour")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.25]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1p8ux"]
 _data = {
 &"RESET": SubResource("Animation_ujw3w"),
-&"flash": SubResource("Animation_c8iql")
+&"damage": SubResource("Animation_c8iql"),
+&"die": SubResource("Animation_e1y6x")
 }
 
 [sub_resource type="Animation" id="Animation_1p8ux"]
@@ -315,16 +356,18 @@ _data = {
 &"walk_right": SubResource("Animation_jv3fx")
 }
 
-[node name="Zombie" type="CharacterBody2D" unique_id=807111278 node_paths=PackedStringArray("hurt_box_component", "health_component") groups=["Enemy"]]
+[node name="Zombie" type="CharacterBody2D" unique_id=807111278 node_paths=PackedStringArray("animation_player", "nav_box", "hurt_box", "hit_flash")]
 material = SubResource("ShaderMaterial_6lnix")
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_uur8n")
-hurt_box_component = NodePath("HurtBoxComponent")
-health_component = NodePath("HealthComponent")
+animation_player = NodePath("AnimationPlayer")
+nav_box = NodePath("NavBox")
+hurt_box = NodePath("HurtBoxComponent")
+hit_flash = NodePath("HitFlashPlayer")
+health_max = 10
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=55146116]
-modulate = Color(1, 0.2941177, 0.2941177, 1)
 use_parent_material = true
 texture = ExtResource("2_ujw3w")
 hframes = 8
@@ -346,6 +389,7 @@ rotation = -1.5707964
 texture = ExtResource("3_xiyom")
 
 [node name="NavBox" type="CollisionShape2D" parent="." unique_id=1134526422]
+visible = false
 shape = SubResource("CapsuleShape2D_ahg1b")
 
 [node name="HurtBoxComponent" parent="." unique_id=641791970 instance=ExtResource("3_c8iql")]
@@ -356,14 +400,8 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent" unique_id=374155966]
 shape = SubResource("CapsuleShape2D_c8iql")
 
-[node name="HealthComponent" parent="." unique_id=633740388 instance=ExtResource("4_1p8ux")]
-max_health = 10
-
 [node name="HitFlashPlayer" type="AnimationPlayer" parent="." unique_id=713317947]
 libraries/ = SubResource("AnimationLibrary_1p8ux")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=214511820]
 libraries/ = SubResource("AnimationLibrary_6lnix")
-
-[node name="DeleteAfterDeath" type="Timer" parent="." unique_id=2139672596]
-one_shot = true

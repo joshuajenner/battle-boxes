@@ -70,6 +70,6 @@ func set_weapon(scene_path: String) -> void:
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if body is Mob:
 		is_dead = true
 		died.emit()

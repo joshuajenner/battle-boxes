@@ -1,14 +1,12 @@
 class_name Projectile
 extends HitBoxComponent
 
-
 @export var sprite: Sprite2D = null
 @export var despawn_timer: Timer = null
 
 @export var speed: float
 @export var is_piercing: bool = false
 @export var can_bounce: bool = false
-
 
 var direction := Vector2.ZERO
 

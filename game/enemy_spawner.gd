@@ -46,6 +46,6 @@ func spawn_enemy() -> void:
 			for i in range(3):
 				var zombie = ZOMBIE_SCENE.instantiate()
 				add_child(zombie)
-				zombie.set_direction(direction)
+				zombie.set_direction_x(direction)
 				triple_timer.start(0.3)
 				await triple_timer.timeout
