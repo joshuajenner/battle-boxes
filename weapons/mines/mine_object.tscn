@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://cpks5cmjo8360"]
+
+[ext_resource type="Script" uid="uid://bafboogd70ymx" path="res://weapons/mines/mine_object.gd" id="1_0nv4g"]
+[ext_resource type="Texture2D" uid="uid://cgvo0mdigisto" path="res://weapons/mines/mine_object.png" id="1_eam3h"]
+[ext_resource type="Script" uid="uid://d0yk430e14u44" path="res://components/hit_box_component.gd" id="3_odm6j"]
+[ext_resource type="Texture2D" uid="uid://cne854xifc4uq" path="res://weapons/bazooka/explosion.png" id="4_rojqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nv4g"]
+size = Vector2(12, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odm6j"]
+size = Vector2(12, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nv4g"]
+radius = 48.0
+
+[sub_resource type="Animation" id="Animation_lxd3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionArea/ExplosionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rojqt"]
+resource_name = "explode"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.050000012, 0.19999999, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionArea/ExplosionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxd3i"]
+_data = {
+&"RESET": SubResource("Animation_lxd3i"),
+&"explode": SubResource("Animation_rojqt")
+}
+
+[node name="MineObject" type="RigidBody2D" unique_id=1422150014 node_paths=PackedStringArray("body_sprite", "detect_area", "hit_box", "explosion_shape", "animation_player", "arm_timer")]
+collision_layer = 16
+collision_mask = 4
+lock_rotation = true
+script = ExtResource("1_0nv4g")
+body_sprite = NodePath("Body")
+detect_area = NodePath("DetectArea")
+hit_box = NodePath("ExplosionArea")
+explosion_shape = NodePath("ExplosionArea/ExplosionShape")
+animation_player = NodePath("AnimationPlayer")
+arm_timer = NodePath("ArmTimer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1116308409]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0nv4g")
+
+[node name="DetectArea" type="Area2D" parent="." unique_id=1319227379]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=298756164]
+shape = SubResource("RectangleShape2D_odm6j")
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=531362826]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("3_odm6j")
+
+[node name="ExplosionShape" type="CollisionShape2D" parent="ExplosionArea" unique_id=1791419095]
+shape = SubResource("CircleShape2D_0nv4g")
+disabled = true
+
+[node name="Body" type="Sprite2D" parent="." unique_id=944089941]
+texture = ExtResource("1_eam3h")
+hframes = 2
+
+[node name="Explosion" type="Sprite2D" parent="." unique_id=206776412]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_rojqt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2042574474]
+libraries/ = SubResource("AnimationLibrary_lxd3i")
+
+[node name="ArmTimer" type="Timer" parent="." unique_id=1506817316]
+wait_time = 0.8
+one_shot = true
+autostart = true

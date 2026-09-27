@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bt17x2yqgmodb"]
 
 [ext_resource type="Script" uid="uid://pxdxn7poqyxf" path="res://ui/game_end_ui.gd" id="1_7bk81"]
+[ext_resource type="Theme" uid="uid://cqfr81bw4njvl" path="res://theme/main_theme.tres" id="2_73dyn"]
 
 [node name="GameEndUI" type="CanvasLayer" unique_id=100207249 node_paths=PackedStringArray("replay_button", "quit_button")]
 script = ExtResource("1_7bk81")
@@ -28,11 +29,13 @@ offset_bottom = 60.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_73dyn")
 theme_override_constants/separation = 32
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=1974081024]
 layout_mode = 2
+theme_type_variation = &"HeroLabel"
 text = "You Died!"
 horizontal_alignment = 1
 
@@ -41,8 +44,10 @@ layout_mode = 2
 
 [node name="ReplayButton" type="Button" parent="VBoxContainer/Buttons" unique_id=715764295]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Play Again"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/Buttons" unique_id=661837562]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Back to Menu"

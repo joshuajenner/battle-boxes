@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ce5wptxn4linc"]
 
+[ext_resource type="Theme" uid="uid://cqfr81bw4njvl" path="res://theme/main_theme.tres" id="1_5g22p"]
 [ext_resource type="Script" uid="uid://d8n8f0o3brn4" path="res://ui/settings/settings_ui.gd" id="1_hmly7"]
 [ext_resource type="Script" uid="uid://b3vy3jld1v505" path="res://ui/settings/resolution_option_button.gd" id="2_1ub5d"]
 [ext_resource type="Script" uid="uid://dur1c6qon51yk" path="res://ui/settings/window_mode_option_button.gd" id="2_e04ht"]
@@ -8,11 +9,13 @@
 [ext_resource type="Script" uid="uid://c7kipcp7ssh37" path="res://ui/settings/volume_slider.gd" id="4_e04ht"]
 
 [node name="SettingsUI" type="TabContainer" unique_id=117789628]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5g22p")
 current_tab = 0
 script = ExtResource("1_hmly7")
 
@@ -133,6 +136,7 @@ offset_right = -8.0
 offset_bottom = 20.0
 text = "0"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="GameSFX" type="HBoxContainer" parent="Audio/VBox/Main" unique_id=391901775]
 layout_mode = 2
@@ -148,6 +152,7 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="GameSFXSlider" type="HSlider" parent="Audio/VBox/Main/GameSFX" unique_id=853624268 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(200, 0)
@@ -171,6 +176,7 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="GameMusicSlider" type="HSlider" parent="Audio/VBox/Main/GameMusic" unique_id=537711784 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(200, 0)
@@ -194,6 +200,7 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MenuSFXSlider" type="HSlider" parent="Audio/VBox/Main/MenuSFX" unique_id=577144157 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(200, 0)
@@ -217,6 +224,7 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MenuMusicSlider" type="HSlider" parent="Audio/VBox/Main/MenuMusic" unique_id=997550218 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(200, 0)

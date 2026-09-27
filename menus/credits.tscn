@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://qydjx77it5hm"]
 
+[ext_resource type="Theme" uid="uid://cqfr81bw4njvl" path="res://theme/main_theme.tres" id="1_5jbn1"]
 [ext_resource type="Script" uid="uid://c28a5otkw3b75" path="res://menus/credits.gd" id="1_xlg2h"]
+[ext_resource type="PackedScene" uid="uid://bqm4xnlqi0jxi" path="res://ui/parallax_background.tscn" id="2_jkw7x"]
 
 [node name="Credits" type="MarginContainer" unique_id=788448155 node_paths=PackedStringArray("back_button")]
 anchors_preset = 15
@@ -8,30 +10,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5jbn1")
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_xlg2h")
-back_button = NodePath("VBoxContainer/TopBar/BackButton")
+back_button = NodePath("VBoxContainer/PanelContainer/TopBar/BackButton")
+
+[node name="ParallaxBackground" parent="." unique_id=1339240228 instance=ExtResource("2_jkw7x")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1538423895]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 
-[node name="TopBar" type="HBoxContainer" parent="VBoxContainer" unique_id=928295724]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1663406373]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/TopBar" unique_id=786487156]
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer/PanelContainer" unique_id=928295724]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/TopBar" unique_id=786487156]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"TitleLabel"
 text = "Credits"
 
-[node name="BackButton" type="Button" parent="VBoxContainer/TopBar" unique_id=2079617509]
+[node name="BackButton" type="Button" parent="VBoxContainer/PanelContainer/TopBar" unique_id=2079617509]
 layout_mode = 2
+size_flags_vertical = 4
 text = "Back"
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1396330332]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer" unique_id=408465095]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2" unique_id=1396330332]
 propagate_maximum_size = true
 layout_mode = 2
 size_flags_vertical = 1
