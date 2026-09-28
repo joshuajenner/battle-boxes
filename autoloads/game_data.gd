@@ -42,6 +42,14 @@ const WEAPONS_LIST: Dictionary = {
 		"name": "Mines",
 		"path": "uid://c37ueif4a6wsg"
 	},
+	Weapon.Type.LAZER_GUN: {
+		"name": "Lazer Gun",
+		"path": "uid://dtmgw1hye6wlt"
+	},
+	Weapon.Type.GRENADE_LAUNCHER: {
+		"name": "Grenade Launcher",
+		"path": "uid://dikpng2cae4sr"
+	},
 }
 
 
@@ -79,3 +87,5 @@ func init_unlocks(score: int) -> void:
 		weapons.append(Weapon.Type.KNIFE)
 	if score > 80:
 		weapons.append(Weapon.Type.MINES)
+	if score > 90:
+		weapons.append(Weapon.Type.GRENADE_LAUNCHER)

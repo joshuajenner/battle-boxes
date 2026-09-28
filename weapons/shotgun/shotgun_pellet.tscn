@@ -22,5 +22,5 @@ shape = SubResource("RectangleShape2D_ahg1b")
 texture = ExtResource("2_1mfb7")
 
 [node name="DespawnTimer" type="Timer" parent="." unique_id=1154856451]
-wait_time = 0.25
+wait_time = 0.3
 one_shot = true

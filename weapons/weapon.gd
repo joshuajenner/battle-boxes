@@ -13,6 +13,7 @@ enum Type {
 	KNIFE,
 	MINES,
 	LAZER_GUN,
+	GRENADE_LAUNCHER,
 }
 
 @export var type: Type
