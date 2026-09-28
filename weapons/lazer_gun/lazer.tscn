@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bsqrlky4p72qh"]
+
+[ext_resource type="Script" uid="uid://dxtfh7udopuxv" path="res://weapons/lazer_gun/lazer.gd" id="1_ywvkd"]
+[ext_resource type="Texture2D" uid="uid://ujpb6j167jv2" path="res://weapons/lazer_gun/lazer.png" id="2_ywvkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm1eh"]
+size = Vector2(640, 5)
+
+[sub_resource type="Animation" id="Animation_ywvkd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_woguh"]
+resource_name = "fade_out"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.8, 0.7, 0.6, 0.5, 0.2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7le00"]
+_data = {
+&"RESET": SubResource("Animation_ywvkd"),
+&"fade_out": SubResource("Animation_woguh")
+}
+
+[node name="Lazer" type="Area2D" unique_id=226156245 node_paths=PackedStringArray("animation_player", "collision_shape")]
+z_index = 2
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_ywvkd")
+animation_player = NodePath("AnimationPlayer")
+collision_shape = NodePath("CollisionShape2D")
+metadata/_custom_type_script = "uid://d0yk430e14u44"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987950773]
+position = Vector2(320, 0)
+shape = SubResource("RectangleShape2D_sm1eh")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=772701858]
+position = Vector2(1.0967255e-05, 0)
+scale = Vector2(128, 1)
+texture = ExtResource("2_ywvkd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=541587664]
+libraries/ = SubResource("AnimationLibrary_7le00")

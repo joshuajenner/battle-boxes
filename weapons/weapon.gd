@@ -12,6 +12,7 @@ enum Type {
 	BAZOOKA,
 	KNIFE,
 	MINES,
+	LAZER_GUN,
 }
 
 @export var type: Type

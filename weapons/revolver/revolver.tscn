@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cyg6ddnt38r4k" path="res://weapons/revolver/revolver.png" id="2_km6dq"]
 [ext_resource type="Texture2D" uid="uid://bs3e5s2n02knd" path="res://player/left_hand.png" id="4_5h0lk"]
 [ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_5h0lk"]
-[ext_resource type="AudioStream" uid="uid://2d0b6iybysfj" path="res://assets/sfx/pistol/SFX_explosionShort2.wav" id="5_ev28f"]
 
 [sub_resource type="Animation" id="Animation_5h0lk"]
 length = 0.001
@@ -120,7 +119,6 @@ position = Vector2(20, 0)
 [node name="FireRateTimer" type="Timer" parent="." unique_id=345720368]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1313625466]
-stream = ExtResource("5_ev28f")
 max_polyphony = 6
 bus = &"GameSFX"
 script = ExtResource("5_5h0lk")

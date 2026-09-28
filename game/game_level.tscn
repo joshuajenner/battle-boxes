@@ -57,7 +57,6 @@ process_mode = 1
 
 [node name="Spawner" parent="Objects" unique_id=1002635223 instance=ExtResource("2_x6325")]
 position = Vector2(0, -192)
-is_disabled = true
 
 [node name="Player" parent="Objects" unique_id=241208287 instance=ExtResource("3_egnn0")]
 position = Vector2(-98, 60)
