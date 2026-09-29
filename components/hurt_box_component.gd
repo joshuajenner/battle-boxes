@@ -18,3 +18,10 @@ func on_area_entered(area: Area2D) -> void:
 		
 		if area.has_knockback:
 			knockback_received.emit(area.knockback_direction_x)
+
+
+func take_damage(amount: int, damager_global_position: Vector2) -> void:
+	if damager_global_position.x > global_position.x:
+		damage_received.emit(amount, -1)
+	else:
+		damage_received.emit(amount, 1)

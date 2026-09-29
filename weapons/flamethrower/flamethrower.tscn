@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cw5vxvopg0r52"]
+
+[ext_resource type="Script" uid="uid://dx5kp656pkce0" path="res://weapons/flamethrower/flamethrower.gd" id="1_im1bc"]
+[ext_resource type="PackedScene" uid="uid://8o3smg43lmh5" path="res://weapons/flamethrower/flame_bolt.tscn" id="2_102dj"]
+[ext_resource type="Texture2D" uid="uid://cqr30mqkjnr7v" path="res://weapons/flamethrower/flamethrower.png" id="2_o8qmx"]
+[ext_resource type="Texture2D" uid="uid://qxyaa77wboxo" path="res://weapons/flamethrower/flame_particle.png" id="3_n1dn3"]
+[ext_resource type="Texture2D" uid="uid://nm70h4lc6b6" path="res://weapons/flamethrower/flamethrower_front.png" id="3_qip3m"]
+
+[sub_resource type="Curve" id="Curve_n1dn3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.666), -1.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qip3m"]
+offsets = PackedFloat32Array(0, 0.76899385, 1)
+colors = PackedColorArray(1, 0.34509805, 0, 1, 1, 1, 0.28235295, 1, 1, 1, 0.28235295, 0)
+
+[sub_resource type="Animation" id="Animation_qip3m"]
+resource_name = "fire"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_102dj"]
+_data = {
+&"fire": SubResource("Animation_qip3m")
+}
+
+[node name="Flamethrower" type="Node2D" unique_id=706567364 node_paths=PackedStringArray("flame_particles", "muzzle", "animation_player", "fire_rate_timer")]
+script = ExtResource("1_im1bc")
+flame_particles = NodePath("Sprite2D/CPUParticles2D")
+flame_bolt_scene = ExtResource("2_102dj")
+muzzle = NodePath("Sprite2D/Marker2D")
+animation_player = NodePath("AnimationPlayer")
+type = 12
+fire_rate_timer = NodePath("FireRateTimer")
+fire_rate_sec = 0.05
+is_directional = true
+damage = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1817491832]
+z_index = 1
+position = Vector2(2, 4)
+texture = ExtResource("2_o8qmx")
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D" unique_id=852953993]
+position = Vector2(20, 1.5)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D" unique_id=1664838021]
+position = Vector2(7, 1.5)
+emitting = false
+amount = 256
+texture = ExtResource("3_n1dn3")
+lifetime = 0.2
+lifetime_randomness = 0.5
+spread = 3.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+scale_amount_curve = SubResource("Curve_n1dn3")
+color_ramp = SubResource("Gradient_qip3m")
+
+[node name="FrontCover" type="Sprite2D" parent="Sprite2D" unique_id=1346733373]
+position = Vector2(6, 1)
+texture = ExtResource("3_qip3m")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=288102198]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1183001166]
+libraries/ = SubResource("AnimationLibrary_102dj")

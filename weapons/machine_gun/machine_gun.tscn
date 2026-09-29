@@ -74,8 +74,9 @@ muzzle = NodePath("Sprite2D/Marker2D")
 weapon_audio = NodePath("WeaponAudioPlayer")
 animation_player = NodePath("AnimationPlayer")
 bullet_spread = 0.05
+type = 3
 fire_rate_timer = NodePath("FireRateTimer")
-fire_rate_sec = 0.1
+fire_rate_sec = 0.08
 is_directional = true
 damage = 5
 

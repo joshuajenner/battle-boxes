@@ -64,7 +64,7 @@ muzzle = NodePath("Sprite2D/Marker2D")
 animation_player = NodePath("AnimationPlayer")
 type = 9
 fire_rate_timer = NodePath("FireRateTimer")
-fire_rate_sec = 0.8
+fire_rate_sec = 0.6
 damage = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1067459186]

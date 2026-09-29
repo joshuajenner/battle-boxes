@@ -137,7 +137,7 @@ left_animation_player = NodePath("LeftAnimationPlayer")
 audio_player = NodePath("WeaponAudioPlayer")
 type = 1
 fire_rate_timer = NodePath("FireRateTimer")
-fire_rate_sec = 0.2
+fire_rate_sec = 0.15
 damage = 5
 
 [node name="Right" type="Sprite2D" parent="." unique_id=1346748621]

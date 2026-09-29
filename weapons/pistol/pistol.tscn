@@ -99,7 +99,7 @@ muzzle = NodePath("Muzzle")
 weapon_audio = NodePath("AudioStreamPlayer2D")
 animation_player = NodePath("AnimationPlayer")
 fire_rate_timer = NodePath("FireRateTimer")
-fire_rate_sec = 0.2
+fire_rate_sec = 0.15
 is_directional = true
 damage = 5
 

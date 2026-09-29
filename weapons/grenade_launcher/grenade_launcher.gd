@@ -7,10 +7,10 @@ extends Weapon
 var velocity := Vector2(450, -150)
 
 func fire() -> void:
-	var grenade_scene: Grenade = grenade_scene.instantiate()
-	grenade_scene.damage = damage
-	grenade_scene.global_position = muzzle.global_position
-	grenade_scene.linear_velocity = Vector2(velocity.x * direction_x, velocity.y)
-	projetile_parent_node.add_child(grenade_scene)
+	var grenade: Grenade = grenade_scene.instantiate()
+	grenade.damage = damage
+	grenade.global_position = muzzle.global_position
+	grenade.linear_velocity = Vector2(velocity.x * direction_x, velocity.y)
+	projetile_parent_node.add_child(grenade)
 	animation_player.stop()
 	animation_player.play("fire")

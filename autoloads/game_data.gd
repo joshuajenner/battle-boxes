@@ -50,6 +50,10 @@ const WEAPONS_LIST: Dictionary = {
 		"name": "Grenade Launcher",
 		"path": "uid://dikpng2cae4sr"
 	},
+	Weapon.Type.FLAMETHROWER: {
+		"name": "Flamethrower",
+		"path": "uid://cw5vxvopg0r52"
+	},
 }
 
 
@@ -89,3 +93,7 @@ func init_unlocks(score: int) -> void:
 		weapons.append(Weapon.Type.MINES)
 	if score > 90:
 		weapons.append(Weapon.Type.GRENADE_LAUNCHER)
+	if score > 100:
+		weapons.append(Weapon.Type.LAZER_GUN)
+	if score > 110:
+		weapons.append(Weapon.Type.FLAMETHROWER)
