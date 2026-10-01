@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b0yg3j2hnuhlp" path="res://game/enemy_spawner.tscn" id="2_x6325"]
 [ext_resource type="PackedScene" uid="uid://bioro8tgyhahn" path="res://player/player.tscn" id="3_egnn0"]
 [ext_resource type="Script" uid="uid://de18edfq03sfl" path="res://game/game_manager.gd" id="5_o8r0f"]
+[ext_resource type="PackedScene" uid="uid://wvqf881mcttl" path="res://game/firepit.tscn" id="5_t0061"]
 [ext_resource type="PackedScene" uid="uid://k1l003cvt3r" path="res://game/box_spawner.tscn" id="7_n7yt8"]
 [ext_resource type="PackedScene" uid="uid://dqkn674vu5nvi" path="res://ui/game_hud_ui.tscn" id="8_jyjt4"]
 [ext_resource type="PackedScene" uid="uid://bt17x2yqgmodb" path="res://ui/game_end_ui.tscn" id="9_gehph"]
@@ -60,6 +61,12 @@ position = Vector2(0, -192)
 
 [node name="Player" parent="Objects" unique_id=241208287 instance=ExtResource("3_egnn0")]
 position = Vector2(-98, 60)
+
+[node name="Firepit" parent="Objects" unique_id=868403871 instance=ExtResource("5_t0061")]
+position = Vector2(0, 190)
+particles_amount = 512
+particles_width = 23
+detection_area_width = 48
 
 [node name="CrateSpawnAreas" type="Node2D" parent="." unique_id=1560927553]
 visible = false

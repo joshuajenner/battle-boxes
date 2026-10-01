@@ -21,7 +21,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
 	if is_dead:
+		weapon.stop_firing()
+		move_and_slide()
 		return
 	
 	if is_on_floor():
@@ -31,14 +36,21 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("move_up"):
 			velocity.y *= 0.8
 	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
 	var input_direction: float = Input.get_axis("move_left", "move_right")
 	if input_direction != 0:
 		direction_x = input_direction
 	weapon.set_direction(direction_x)
 	velocity.x = input_direction * move_speed
+	
+	if Input.is_action_just_pressed("fire"):
+		weapon.start_firing()
+	
+	if Input.is_action_pressed("fire"):
+		weapon.try_fire()
+	
+	if Input.is_action_just_released("fire"):
+		weapon.stop_firing()
+	
 	move_and_slide()
 	handle_animation(input_direction, direction_x)
 
@@ -72,5 +84,9 @@ func set_weapon(scene_path: String) -> void:
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Mob:
-		is_dead = true
-		died.emit()
+		die()
+
+
+func die() -> void:
+	is_dead = true
+	died.emit()

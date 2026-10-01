@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://wvqf881mcttl"]
+
+[ext_resource type="Texture2D" uid="uid://qxyaa77wboxo" path="res://weapons/flamethrower/flame_particle.png" id="1_7jxva"]
+[ext_resource type="Script" uid="uid://c66qxysvcj1m2" path="res://game/firepit.gd" id="1_dlxvy"]
+
+[sub_resource type="Curve" id="Curve_7jxva"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dlxvy"]
+offsets = PackedFloat32Array(0, 0.73511904, 0.82043654, 0.9394841, 1)
+colors = PackedColorArray(1, 0.34509805, 0, 1, 1, 1, 0.28235295, 1, 1, 1, 0.28235295, 0.15068477, 1, 1, 0.28235295, 0, 0, 0, 0, 0.60784316)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahg1b"]
+resource_local_to_scene = true
+size = Vector2(24, 20)
+
+[node name="Firepit" type="Node2D" unique_id=868403871 node_paths=PackedStringArray("particles", "detection_area", "collision_shape_2d")]
+script = ExtResource("1_dlxvy")
+particles = NodePath("Particles")
+detection_area = NodePath("Area2D")
+collision_shape_2d = NodePath("Area2D/CollisionShape2D")
+
+[node name="Particles" type="CPUParticles2D" parent="." unique_id=664194624]
+position = Vector2(0, 1)
+amount = 256
+texture = ExtResource("1_7jxva")
+lifetime = 0.3
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(11, 0)
+direction = Vector2(0, -1)
+spread = 5.0
+gravity = Vector2(0, 9.8)
+initial_velocity_min = 10.0
+initial_velocity_max = 100.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_7jxva")
+color_ramp = SubResource("Gradient_dlxvy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2041563619]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2022222184]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_ahg1b")

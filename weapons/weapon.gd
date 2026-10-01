@@ -40,17 +40,6 @@ func setup() -> void:
 func _physics_process(_delta: float) -> void:
 	if is_directional:
 		scale.x = direction_x
-	
-	if Input.is_action_just_pressed("fire"):
-		start_firing()
-	
-	if Input.is_action_pressed("fire"):
-		if fire_rate_timer.is_stopped():
-			fire()
-			fire_rate_timer.start(fire_rate_sec)
-	
-	if Input.is_action_just_released("fire"):
-		stop_firing()
 
 
 func set_direction(value: float) -> void:
@@ -60,6 +49,12 @@ func set_direction(value: float) -> void:
 
 func start_firing() -> void:
 	pass
+
+
+func try_fire() -> void:
+	if fire_rate_timer.is_stopped():
+		fire()
+		fire_rate_timer.start(fire_rate_sec)
 
 
 func fire() -> void:

@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var damage_tick: Timer
 @export var detection_area: Area2D
 
+
 func _ready() -> void:
 	despawn_timer.timeout.connect(on_despawn_timer_timeout)
 	damage_tick.timeout.connect(on_damage_tick_timeout)
