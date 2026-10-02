@@ -19,10 +19,10 @@ extends Node2D
 		shape.size.x = value
 
 @export_category("Nodes")
+@export var spawn_marker: Marker2D
 @export var particles: CPUParticles2D
 @export var detection_area: Area2D
 @export var collision_shape_2d: CollisionShape2D
-
 
 
 func _ready() -> void:
@@ -32,3 +32,6 @@ func _ready() -> void:
 func on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		Player.current.die()
+	elif body is Mob:
+		body.global_position = spawn_marker.global_position
+		body.enter_rage()

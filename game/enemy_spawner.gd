@@ -1,4 +1,4 @@
-extends Node2D
+extends Marker2D
 
 
 const ZOMBIE_SCENE = preload("uid://2gliggdm8ayc")
@@ -22,7 +22,7 @@ enum {
 }
 
 var spawns: Array[int] = [ONE_ZOMBIE, ONE_BIG_ZOMBIE, ONE_GHOST, TRIPLE_ZOMBIE] 
-var weights := PackedFloat32Array([1, 0.5, 0.5, 0.25])
+var weights := PackedFloat32Array([1, 0.3, 0.3, 0.3])
 
 
 func _ready() -> void:

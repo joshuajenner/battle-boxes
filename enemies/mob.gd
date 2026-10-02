@@ -28,6 +28,10 @@ func set_direction_x(value: int) -> void:
 	move_direction.x = value
 
 
+func enter_rage() -> void:
+	print("rawr")
+
+
 func on_hurt_box_damage_received(amount: int, direction_x: float) -> void:
 	if is_dead:
 		return

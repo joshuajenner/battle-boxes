@@ -79,7 +79,6 @@ func set_weapon(scene_path: String) -> void:
 	weapon.queue_free()
 	weapon = new_weapon
 	weapon_parent.call_deferred("add_child", new_weapon)
-	#weapon_parent.add_child(new_weapon)
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:

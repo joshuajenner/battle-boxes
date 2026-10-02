@@ -62,11 +62,12 @@ position = Vector2(0, -192)
 [node name="Player" parent="Objects" unique_id=241208287 instance=ExtResource("3_egnn0")]
 position = Vector2(-98, 60)
 
-[node name="Firepit" parent="Objects" unique_id=868403871 instance=ExtResource("5_t0061")]
+[node name="Firepit" parent="Objects" unique_id=868403871 node_paths=PackedStringArray("spawn_marker") instance=ExtResource("5_t0061")]
 position = Vector2(0, 190)
 particles_amount = 512
 particles_width = 23
 detection_area_width = 48
+spawn_marker = NodePath("../Spawner")
 
 [node name="CrateSpawnAreas" type="Node2D" parent="." unique_id=1560927553]
 visible = false
