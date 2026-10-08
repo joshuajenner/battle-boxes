@@ -8,8 +8,14 @@ extends CharacterBody2D
 @export var health_max: int
 var health_current: int = 0
 @export var move_speed: float = 100
+@export var rage_move_speed: float = 150
 var move_direction: Vector2 = Vector2.ZERO
 var is_dead: bool = false
+
+@export var normal_colour_1: Color
+@export var normal_colour_2: Color
+@export var rage_colour_1: Color
+@export var rage_colour_2: Color
 
 
 func _ready() -> void:
@@ -29,7 +35,12 @@ func set_direction_x(value: int) -> void:
 
 
 func enter_rage() -> void:
-	print("rawr")
+	swap_to_rage_palette()
+
+
+func swap_to_rage_palette() -> void:
+	self.material.set_shader_parameter("new_colour_1", rage_colour_1)
+	self.material.set_shader_parameter("new_colour_2", rage_colour_2)
 
 
 func on_hurt_box_damage_received(amount: int, direction_x: float) -> void:

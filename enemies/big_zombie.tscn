@@ -9,8 +9,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vunt0"]
 resource_local_to_scene = true
 shader = ExtResource("1_2vclf")
-shader_parameter/colour = Vector3(0, 0, 0)
-shader_parameter/alpha = 0.0
+shader_parameter/overlay_colour = Color(0, 0, 0, 1)
+shader_parameter/overlay_alpha = 0.0
+shader_parameter/original_colour_1 = Color(0.15686275, 0.28235295, 0.24705882, 1)
+shader_parameter/original_colour_2 = Color(0.12941177, 0.21176471, 0.1882353, 1)
+shader_parameter/new_colour_1 = Color(0.15686275, 0.28235295, 0.24705882, 1)
+shader_parameter/new_colour_2 = Color(0.12941177, 0.21176471, 0.1882353, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j5wvq"]
 radius = 6.0
@@ -25,7 +29,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/alpha")
+tracks/0/path = NodePath(".:material:shader_parameter/overlay_alpha")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,26 +45,26 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/alpha")
+tracks/0/path = NodePath(".:material:shader_parameter/overlay_colour")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.75, 0.0]
+"values": [Color(1, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/colour")
+tracks/1/path = NodePath(".:material:shader_parameter/overlay_alpha")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector3(1, 0, 0)]
+"values": [0.75, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_8hvaq"]
@@ -69,26 +73,26 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/alpha")
+tracks/0/path = NodePath(".:material:shader_parameter/overlay_colour")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.25]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/colour")
+tracks/1/path = NodePath(".:material:shader_parameter/overlay_alpha")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector3(0, 0, 0)]
+"values": [0.25]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7aio"]
@@ -344,6 +348,10 @@ nav_box = NodePath("NavBox")
 hurt_box = NodePath("HurtBoxComponent")
 hit_flash = NodePath("HitFlashPlayer")
 health_max = 20
+normal_colour_1 = Color(0.15686275, 0.28235295, 0.24705882, 1)
+normal_colour_2 = Color(0.12941177, 0.21176471, 0.1882353, 1)
+rage_colour_1 = Color(0.3529412, 0.15686275, 0.15686275, 1)
+rage_colour_2 = Color(0.27450982, 0.11764706, 0.11764706, 1)
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1791890782]
 use_parent_material = true

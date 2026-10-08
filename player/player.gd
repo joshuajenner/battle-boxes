@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	if is_dead:
-		weapon.stop_firing()
 		move_and_slide()
 		return
 	
@@ -88,4 +87,6 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 
 func die() -> void:
 	is_dead = true
+	velocity.x = 0
+	weapon.stop_firing()
 	died.emit()

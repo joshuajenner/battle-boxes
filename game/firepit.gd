@@ -34,4 +34,5 @@ func on_detection_area_body_entered(body: Node2D) -> void:
 		Player.current.die()
 	elif body is Mob:
 		body.global_position = spawn_marker.global_position
+		body.reset_physics_interpolation()
 		body.enter_rage()

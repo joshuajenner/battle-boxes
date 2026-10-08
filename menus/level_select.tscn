@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cp5654tesmc32" path="res://ui/level_select/level_1_thumb.png" id="1_x5a0v"]
 [ext_resource type="PackedScene" uid="uid://bqm4xnlqi0jxi" path="res://ui/parallax_background.tscn" id="3_an5vc"]
 
-[node name="LevelSelect" type="MarginContainer" unique_id=341223851 node_paths=PackedStringArray("play_level_1_button", "level_1_highscore_label", "back_button")]
+[node name="LevelSelect" type="MarginContainer" unique_id=341223851 node_paths=PackedStringArray("play_level_1_button", "play_level_2_button", "level_1_highscore_label", "level_2_highscore_label", "back_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,8 +17,10 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_a00cd")
-play_level_1_button = NodePath("VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/Button")
-level_1_highscore_label = NodePath("VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/Level1HighscoreLabel")
+play_level_1_button = NodePath("VBoxContainer/HBoxContainer2/Level1/VBox/Button")
+play_level_2_button = NodePath("VBoxContainer/HBoxContainer2/Level2/VBox/Button")
+level_1_highscore_label = NodePath("VBoxContainer/HBoxContainer2/Level1/VBox/Highscore")
+level_2_highscore_label = NodePath("VBoxContainer/HBoxContainer2/Level2/VBox/Highscore")
 back_button = NodePath("VBoxContainer/TopBar/HBoxContainer/BackButton")
 
 [node name="ParallaxBackground" parent="." unique_id=1339240228 instance=ExtResource("3_an5vc")]
@@ -42,38 +44,158 @@ text = "Level Select"
 layout_mode = 2
 text = "Back"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=908673891]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=597049714]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1123945508]
+[node name="Level1" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=2112381015]
 layout_mode = 2
-theme_override_constants/separation = 64
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Level1" unique_id=1925200990]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1925200990]
-custom_minimum_size = Vector2(256, 0)
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer2/Level1/VBox" unique_id=1217062363]
 layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
+theme_type_variation = &"TitleLabel"
+text = "1"
+horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=197409639]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/Level1/VBox" unique_id=197409639]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("1_x5a0v")
 stretch_mode = 5
 
-[node name="Level1HighscoreLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1103859182]
+[node name="Highscore" type="Label" parent="VBoxContainer/HBoxContainer2/Level1/VBox" unique_id=1103859182]
 layout_mode = 2
 text = "Highscore: 0"
+horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=694166734]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=44845737]
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2/Level1/VBox" unique_id=44845737]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer2/Level1/VBox" unique_id=356651878]
+layout_mode = 2
+
+[node name="Level2" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1872862462]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Level2" unique_id=455661853]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer2/Level2/VBox" unique_id=217722828]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "2"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/Level2/VBox" unique_id=2052553486]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_x5a0v")
+stretch_mode = 5
+
+[node name="Highscore" type="Label" parent="VBoxContainer/HBoxContainer2/Level2/VBox" unique_id=217849018]
+layout_mode = 2
+text = "Highscore: 0"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2/Level2/VBox" unique_id=1193771376]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer2/Level2/VBox" unique_id=1472359619]
+layout_mode = 2
+
+[node name="Level3" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=882770042]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Level3" unique_id=711330849]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer2/Level3/VBox" unique_id=1677208073]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "3"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/Level3/VBox" unique_id=752079150]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_x5a0v")
+stretch_mode = 5
+
+[node name="Highscore" type="Label" parent="VBoxContainer/HBoxContainer2/Level3/VBox" unique_id=1006849377]
+layout_mode = 2
+text = "Highscore: 0"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2/Level3/VBox" unique_id=2134013462]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer2/Level3/VBox" unique_id=1138361672]
+layout_mode = 2
+
+[node name="Level4" type="PanelContainer" parent="VBoxContainer/HBoxContainer2" unique_id=183668457]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Level4" unique_id=2093882494]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer2/Level4/VBox" unique_id=1146708313]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "4"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/Level4/VBox" unique_id=603001053]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_x5a0v")
+stretch_mode = 5
+
+[node name="Highscore" type="Label" parent="VBoxContainer/HBoxContainer2/Level4/VBox" unique_id=354881989]
+layout_mode = 2
+text = "Highscore: 0"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2/Level4/VBox" unique_id=517688191]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer2/Level4/VBox" unique_id=809802575]
+layout_mode = 2

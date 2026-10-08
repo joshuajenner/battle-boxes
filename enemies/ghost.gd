@@ -53,3 +53,8 @@ func on_bounce_timer_timeout() -> void:
 			move_direction.x = -1
 		else:
 			move_direction.x = 1
+
+
+func enter_rage() -> void:
+	swap_to_rage_palette()
+	move_speed = rage_move_speed

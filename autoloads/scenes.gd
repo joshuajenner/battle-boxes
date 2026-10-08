@@ -7,7 +7,8 @@ const ALL_SCENES: Array[String] = [
 	LEVEL_SELECT,
 	SETTINGS_MENU,
 	CREDITS,
-	GAME_LEVEL,
+	LEVEL_1,
+	LEVEL_2,
 ]
 
 
@@ -16,4 +17,5 @@ const LEVEL_SELECT: String = "res://menus/level_select.tscn"
 const SETTINGS_MENU: String = "res://menus/settings_menu.tscn"
 const CREDITS: String = "res://menus/credits.tscn"
 
-const GAME_LEVEL: String = "res://game/game_level.tscn"
+const LEVEL_1: String = "res://game/level_1.tscn"
+const LEVEL_2: String = "res://game/level_2.tscn"

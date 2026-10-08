@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c1mak1n3kw7oe" path="res://player/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://e818w2120bhr" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="PackedScene" uid="uid://cw5vxvopg0r52" path="res://weapons/flamethrower/flamethrower.tscn" id="2_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://dvq8ltolgnx3c" path="res://weapons/pistol/pistol.tscn" id="2_g1dw6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahg1b"]
 radius = 5.0
@@ -228,12 +228,12 @@ _data = {
 collision_mask = 4
 script = ExtResource("1_rkbax")
 weapon_parent = NodePath("Weapon")
-weapon = NodePath("Weapon/Flamethrower")
+weapon = NodePath("Weapon/Pistol")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1640831766]
 
-[node name="Flamethrower" parent="Weapon" unique_id=706567364 instance=ExtResource("2_g1dw6")]
+[node name="Pistol" parent="Weapon" unique_id=2099555663 instance=ExtResource("2_g1dw6")]
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=1794200612]
 texture = ExtResource("1_oul6g")

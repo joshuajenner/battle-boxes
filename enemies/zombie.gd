@@ -32,3 +32,9 @@ func handle_animation() -> void:
 			animation_player.play("walk_left")
 		else:
 			animation_player.play("fall_left")
+
+
+func enter_rage() -> void:
+	swap_to_rage_palette()
+	move_speed = rage_move_speed
+	animation_player.speed_scale = rage_move_speed / move_speed
