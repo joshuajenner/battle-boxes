@@ -21,7 +21,6 @@ var level_3_high_score: int = 0
 
 
 func _ready() -> void:
-	save()
 	load_save()
 
 

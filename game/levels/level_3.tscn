@@ -10,28 +10,34 @@
 [ext_resource type="PackedScene" uid="uid://bt17x2yqgmodb" path="res://ui/game_end_ui.tscn" id="8_e3awi"]
 [ext_resource type="PackedScene" uid="uid://b43cgiwjulcpp" path="res://ui/game_pause_ui.tscn" id="9_54a2v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hokst"]
-size = Vector2(288, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xssfl"]
-size = Vector2(120, 24)
+size = Vector2(144, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lsgo"]
+size = Vector2(192, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o873a"]
-size = Vector2(120, 24)
+size = Vector2(144, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04mhw"]
-size = Vector2(288, 24)
+size = Vector2(96, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6tti"]
+size = Vector2(96, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mndiv"]
+size = Vector2(96, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ix4y"]
+size = Vector2(48, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83a7s"]
+size = Vector2(48, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyhwo"]
 size = Vector2(120, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ix4y"]
-size = Vector2(120, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq7hc"]
-size = Vector2(120, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_83a7s"]
 size = Vector2(120, 24)
 
 [node name="Level3" type="Node2D" unique_id=2033538592 node_paths=PackedStringArray("box_spawner", "game_hud_ui", "game_end_ui", "game_pause_ui")]
@@ -78,62 +84,73 @@ detection_area_width = 48
 spawn_marker = NodePath("../EnemySpawner")
 
 [node name="CrateSpawnAreas" type="Node2D" parent="." unique_id=1560927553]
-visible = false
 
-[node name="TopMiddle" type="Area2D" parent="CrateSpawnAreas" unique_id=134536191]
+[node name="TopMiddle" type="Area2D" parent="CrateSpawnAreas" unique_id=1549780335]
 
-[node name="TMShape" type="CollisionShape2D" parent="CrateSpawnAreas/TopMiddle" unique_id=920222601]
-position = Vector2(0, -84)
-shape = SubResource("RectangleShape2D_hokst")
-
-[node name="MiddleLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=511053261]
-
-[node name="MLShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleLeft" unique_id=629999329]
-position = Vector2(-204, -12)
+[node name="TMShape" type="CollisionShape2D" parent="CrateSpawnAreas/TopMiddle" unique_id=809668799]
+position = Vector2(-192, -36)
 shape = SubResource("RectangleShape2D_xssfl")
 
-[node name="MiddleRight" type="Area2D" parent="CrateSpawnAreas" unique_id=282685456]
+[node name="TopLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=511053261]
 
-[node name="MRShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleRight" unique_id=2129158566]
-position = Vector2(204, -12)
+[node name="TLShape" type="CollisionShape2D" parent="CrateSpawnAreas/TopLeft" unique_id=629999329]
+position = Vector2(0, -108)
+shape = SubResource("RectangleShape2D_2lsgo")
+
+[node name="TopRight" type="Area2D" parent="CrateSpawnAreas" unique_id=282685456]
+
+[node name="TRShape" type="CollisionShape2D" parent="CrateSpawnAreas/TopRight" unique_id=2129158566]
+position = Vector2(192, -36)
 shape = SubResource("RectangleShape2D_o873a")
 
-[node name="MiddleMiddle" type="Area2D" parent="CrateSpawnAreas" unique_id=720116892]
+[node name="BottomMiddle" type="Area2D" parent="CrateSpawnAreas" unique_id=720116892]
 
-[node name="MMShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleMiddle" unique_id=2085503590]
-position = Vector2(0, 60)
+[node name="MMShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomMiddle" unique_id=2085503590]
+position = Vector2(0, 108)
 shape = SubResource("RectangleShape2D_04mhw")
 
-[node name="BottomFarLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=1497222963]
+[node name="MiddleLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=819290537]
 
-[node name="BFLShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomFarLeft" unique_id=1367134798]
-position = Vector2(-204, 132)
-shape = SubResource("RectangleShape2D_eyhwo")
+[node name="MLShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleLeft" unique_id=2034383717]
+position = Vector2(-96, 36)
+shape = SubResource("RectangleShape2D_q6tti")
+
+[node name="MiddleRight" type="Area2D" parent="CrateSpawnAreas" unique_id=976056239]
+
+[node name="MRShape" type="CollisionShape2D" parent="CrateSpawnAreas/MiddleRight" unique_id=154116547]
+position = Vector2(96, 36)
+shape = SubResource("RectangleShape2D_mndiv")
 
 [node name="BottomLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=565311119]
 
 [node name="BLShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomLeft" unique_id=241155293]
-position = Vector2(-84, 156)
+position = Vector2(-72, 132)
 shape = SubResource("RectangleShape2D_7ix4y")
-
-[node name="BottomFarRight" type="Area2D" parent="CrateSpawnAreas" unique_id=1908343817]
-
-[node name="BFRShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomFarRight" unique_id=2040011059]
-position = Vector2(204, 132)
-shape = SubResource("RectangleShape2D_mq7hc")
 
 [node name="BottomRight" type="Area2D" parent="CrateSpawnAreas" unique_id=769917789]
 
 [node name="BRShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomRight" unique_id=679444528]
-position = Vector2(84, 156)
+position = Vector2(72, 132)
 shape = SubResource("RectangleShape2D_83a7s")
+
+[node name="BottomFarLeft" type="Area2D" parent="CrateSpawnAreas" unique_id=1497222963]
+
+[node name="BFLShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomFarLeft" unique_id=1367134798]
+position = Vector2(-204, 108)
+shape = SubResource("RectangleShape2D_eyhwo")
+
+[node name="BottomFarRight" type="Area2D" parent="CrateSpawnAreas" unique_id=1908343817]
+
+[node name="BFRShape" type="CollisionShape2D" parent="CrateSpawnAreas/BottomFarRight" unique_id=2040011059]
+position = Vector2(204, 108)
+shape = SubResource("RectangleShape2D_mq7hc")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=823235731]
 process_callback = 0
 
 [node name="BoxSpawner" parent="." unique_id=1773167764 node_paths=PackedStringArray("spawn_node", "spawn_areas") instance=ExtResource("6_qvkuw")]
 spawn_node = NodePath("..")
-spawn_areas = [NodePath("../CrateSpawnAreas/TopMiddle/TMShape"), NodePath("../CrateSpawnAreas/MiddleLeft/MLShape"), NodePath("../CrateSpawnAreas/MiddleRight/MRShape"), NodePath("../CrateSpawnAreas/MiddleMiddle/MMShape"), NodePath("../CrateSpawnAreas/BottomFarLeft/BFLShape"), NodePath("../CrateSpawnAreas/BottomLeft/BLShape"), NodePath("../CrateSpawnAreas/BottomFarRight/BFRShape"), NodePath("../CrateSpawnAreas/BottomRight/BRShape")]
+spawn_areas = [NodePath("../CrateSpawnAreas/TopMiddle/TMShape"), NodePath("../CrateSpawnAreas/TopLeft/TLShape"), NodePath("../CrateSpawnAreas/TopRight/TRShape"), NodePath("../CrateSpawnAreas/BottomMiddle/MMShape"), NodePath("../CrateSpawnAreas/MiddleLeft/MLShape"), NodePath("../CrateSpawnAreas/MiddleRight/MRShape"), NodePath("../CrateSpawnAreas/BottomLeft/BLShape"), NodePath("../CrateSpawnAreas/BottomRight/BRShape"), NodePath("../CrateSpawnAreas/BottomFarLeft/BFLShape"), NodePath("../CrateSpawnAreas/BottomFarRight/BFRShape")]
 
 [node name="GameHUD" parent="." unique_id=430671502 instance=ExtResource("7_b8yba")]
 process_mode = 3
