@@ -57,43 +57,18 @@ const WEAPONS_LIST: Dictionary = {
 }
 
 
-var weapons: Array[Weapon.Type] = []
-
-
-func _ready() -> void:
-	init_unlocks(GameSave.lifetime_score)
-	
-	GameSave.loaded.connect(on_game_save_loaded)
-
-
-func on_game_save_loaded() -> void:
-	init_unlocks(GameSave.lifetime_score)
-
-
-func init_unlocks(score: int) -> void:
-	weapons.clear()
-	weapons.append(Weapon.Type.PISTOL)
-	weapons.append(Weapon.Type.DUAL_PISTOLS)
-	
-	if score > 10:
-		weapons.append(Weapon.Type.REVOLVER)
-	if score > 20:
-		weapons.append(Weapon.Type.MACHINE_GUN)
-	if score > 30:
-		weapons.append(Weapon.Type.MINI_GUN)
-	if score > 40:
-		weapons.append(Weapon.Type.SAW_GUN)
-	if score > 50:
-		weapons.append(Weapon.Type.SHOTGUN)
-	if score > 60:
-		weapons.append(Weapon.Type.BAZOOKA)
-	if score > 70:
-		weapons.append(Weapon.Type.KNIFE)
-	if score > 80:
-		weapons.append(Weapon.Type.MINES)
-	if score > 90:
-		weapons.append(Weapon.Type.GRENADE_LAUNCHER)
-	if score > 100:
-		weapons.append(Weapon.Type.LAZER_GUN)
-	if score > 110:
-		weapons.append(Weapon.Type.FLAMETHROWER)
+var weapons: Array[Weapon.Type] = [
+	Weapon.Type.PISTOL,
+	Weapon.Type.DUAL_PISTOLS,
+	Weapon.Type.REVOLVER,
+	Weapon.Type.SHOTGUN,
+	Weapon.Type.MACHINE_GUN,
+	Weapon.Type.MINI_GUN,
+	Weapon.Type.MINES,
+	Weapon.Type.GRENADE_LAUNCHER,
+	Weapon.Type.BAZOOKA,
+	Weapon.Type.FLAMETHROWER,
+	Weapon.Type.SAW_GUN,
+	Weapon.Type.LAZER_GUN,
+	Weapon.Type.KNIFE,
+]
