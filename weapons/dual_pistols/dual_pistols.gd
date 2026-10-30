@@ -6,7 +6,6 @@ extends Weapon
 @export var muzzle_left: Marker2D
 @export var right_animation_player: AnimationPlayer
 @export var left_animation_player: AnimationPlayer
-@export var audio_player: WeaponAudioPlayer
 
 
 func fire() -> void:
@@ -22,7 +21,5 @@ func fire() -> void:
 	left_animation_player.stop()
 	right_animation_player.play("fire")
 	left_animation_player.play("fire")
-	audio_player.play_random_pitch()
-	audio_player.play_random_pitch()
 	projetile_parent_node.add_child(bullet_right)
 	projetile_parent_node.add_child(bullet_left)

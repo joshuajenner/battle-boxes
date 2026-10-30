@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://s38wlt0bfvfa" path="res://weapons/pistol/pistol.gd" id="1_5icxk"]
 [ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_f30ot"]
 [ext_resource type="Texture2D" uid="uid://bs3e5s2n02knd" path="res://player/left_hand.png" id="4_r7pee"]
-[ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="5_ie44i"]
 
 [sub_resource type="Animation" id="Animation_r7pee"]
 length = 0.001
@@ -92,11 +91,10 @@ _data = {
 &"fire": SubResource("Animation_ie44i")
 }
 
-[node name="Pistol" type="Node2D" unique_id=2099555663 node_paths=PackedStringArray("muzzle", "weapon_audio", "animation_player", "fire_rate_timer")]
+[node name="Pistol" type="Node2D" unique_id=2099555663 node_paths=PackedStringArray("muzzle", "animation_player", "fire_rate_timer")]
 script = ExtResource("1_5icxk")
 bullet_scene = ExtResource("2_f30ot")
 muzzle = NodePath("Muzzle")
-weapon_audio = NodePath("AudioStreamPlayer2D")
 animation_player = NodePath("AnimationPlayer")
 fire_rate_timer = NodePath("FireRateTimer")
 fire_rate_sec = 0.15
@@ -116,12 +114,6 @@ texture = ExtResource("4_r7pee")
 position = Vector2(16, 0)
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1928529572]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=195268465]
-max_polyphony = 10
-bus = &"GameSFX"
-script = ExtResource("5_ie44i")
-pitch_scale_min = 0.95
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=658757189]
 libraries/ = SubResource("AnimationLibrary_r7pee")

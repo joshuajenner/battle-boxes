@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://chobopdl5s42j" path="res://weapons/mini_gun/mini_gun.gd" id="1_cdpeb"]
 [ext_resource type="Texture2D" uid="uid://cxggvonirt6ho" path="res://weapons/mini_gun/mini_gun.png" id="2_ic84m"]
 [ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_n4tyb"]
-[ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="3_ic84m"]
 
 [sub_resource type="Animation" id="Animation_n4tyb"]
 length = 0.001
@@ -34,7 +33,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_0qcuf"]
 resource_name = "fire"
-length = 0.060000000000000005
+length = 0.06
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -67,12 +66,11 @@ _data = {
 &"fire": SubResource("Animation_0qcuf")
 }
 
-[node name="MiniGun" type="Node2D" unique_id=83048517 node_paths=PackedStringArray("muzzle", "weapon_audio", "animation_player", "fire_rate_timer")]
+[node name="MiniGun" type="Node2D" unique_id=83048517 node_paths=PackedStringArray("muzzle", "animation_player", "fire_rate_timer")]
 z_index = 1
 script = ExtResource("1_cdpeb")
 bullet_scene = ExtResource("2_n4tyb")
 muzzle = NodePath("Sprite2D/Marker2D")
-weapon_audio = NodePath("WeaponAudioPlayer")
 animation_player = NodePath("AnimationPlayer")
 bullet_spread_up = 0.1
 bullet_spread_down = 0.02
@@ -94,7 +92,3 @@ position = Vector2(18, -0.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1613113330]
 libraries/ = SubResource("AnimationLibrary_ofwd4")
-
-[node name="WeaponAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=2049186823]
-script = ExtResource("3_ic84m")
-metadata/_custom_type_script = "uid://cggrismcy24x2"

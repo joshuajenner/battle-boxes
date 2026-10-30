@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://rqg5ffrfv3b5" path="res://weapons/shotgun/shotgun.gd" id="1_0kfn4"]
 [ext_resource type="PackedScene" uid="uid://dlca4kc331fuh" path="res://weapons/shotgun/shotgun_pellet.tscn" id="2_apfrx"]
-[ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="2_rxqsx"]
 [ext_resource type="Texture2D" uid="uid://bvgegt61tbhlu" path="res://weapons/shotgun/shotgun.png" id="3_ggjqm"]
 
 [sub_resource type="Animation" id="Animation_f42wg"]
@@ -91,11 +90,10 @@ _data = {
 &"fire": SubResource("Animation_ggjqm")
 }
 
-[node name="Shotgun" type="Node2D" unique_id=465244881 node_paths=PackedStringArray("muzzle", "weapon_audio", "animation_player", "fire_rate_timer")]
+[node name="Shotgun" type="Node2D" unique_id=465244881 node_paths=PackedStringArray("muzzle", "animation_player", "fire_rate_timer")]
 script = ExtResource("1_0kfn4")
 bullet_scene = ExtResource("2_apfrx")
 muzzle = NodePath("Marker2D")
-weapon_audio = NodePath("WeaponAudioPlayer")
 animation_player = NodePath("AnimationPlayer")
 pellets_per_shot = 8
 pellet_spread = 0.15
@@ -113,10 +111,6 @@ hframes = 3
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=284890202]
 position = Vector2(17, -1)
-
-[node name="WeaponAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=990121290]
-script = ExtResource("2_rxqsx")
-metadata/_custom_type_script = "uid://cggrismcy24x2"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=975115438]
 libraries/ = SubResource("AnimationLibrary_f42wg")

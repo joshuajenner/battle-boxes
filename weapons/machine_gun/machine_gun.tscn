@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dqqqfmlqrmfwg" path="res://weapons/machine_gun/machine_gun.png" id="1_5kob4"]
 [ext_resource type="Script" uid="uid://dvq8gibx1ct27" path="res://weapons/machine_gun/machine_gun.gd" id="1_a31f2"]
 [ext_resource type="PackedScene" uid="uid://dpykyiq83n7vr" path="res://weapons/bullet/bullet.tscn" id="2_samat"]
-[ext_resource type="Script" uid="uid://cggrismcy24x2" path="res://weapons/weapon_audio_player.gd" id="2_v81f0"]
 
 [sub_resource type="Animation" id="Animation_pnvnj"]
 length = 0.001
@@ -67,11 +66,10 @@ _data = {
 &"fire": SubResource("Animation_samat")
 }
 
-[node name="MachineGun" type="Node2D" unique_id=429944730 node_paths=PackedStringArray("muzzle", "weapon_audio", "animation_player", "fire_rate_timer")]
+[node name="MachineGun" type="Node2D" unique_id=429944730 node_paths=PackedStringArray("muzzle", "animation_player", "fire_rate_timer")]
 script = ExtResource("1_a31f2")
 bullet_scene = ExtResource("2_samat")
 muzzle = NodePath("Sprite2D/Marker2D")
-weapon_audio = NodePath("WeaponAudioPlayer")
 animation_player = NodePath("AnimationPlayer")
 bullet_spread = 0.05
 type = 3
@@ -93,7 +91,3 @@ scale = Vector2(0.99999994, 0.99999994)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1646443159]
 libraries/ = SubResource("AnimationLibrary_pnvnj")
-
-[node name="WeaponAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=951267226]
-script = ExtResource("2_v81f0")
-metadata/_custom_type_script = "uid://cggrismcy24x2"

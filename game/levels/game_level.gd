@@ -1,7 +1,7 @@
 class_name GameLevel
 extends Node
 
-@export var level_index: int = 0
+
 @export var box_spawner: BoxSpawner
 @export var game_hud_ui: GameHUDUI
 @export var game_end_ui: GameEndUI
