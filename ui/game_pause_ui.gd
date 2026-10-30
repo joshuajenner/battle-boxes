@@ -40,5 +40,4 @@ func on_quit_button_pressed() -> void:
 
 func on_settings_back_button_pressed() -> void:
 	VideoSettings.save()
-	AudioSettings.save()
 	show_menu()

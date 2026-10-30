@@ -1,7 +1,7 @@
 class_name GameLevel
 extends Node
 
-
+@export var level_index: int
 @export var box_spawner: BoxSpawner
 @export var game_hud_ui: GameHUDUI
 @export var game_end_ui: GameEndUI
@@ -10,10 +10,12 @@ extends Node
 
 var is_game_over: bool = false
 var player: Player = null
+var current_score: int = 0
 
 
 func _ready() -> void:
 	player = Player.current
+	current_score = 0
 	is_game_over = false
 	game_end_ui.visible = false
 	game_pause_ui.visible = false
@@ -28,8 +30,7 @@ func spawn_box() -> void:
 
 
 func on_box_picked_up() -> void:
-	GameSave.lifetime_score += 1
-	GameSave.level_1_high_score += 1
+	current_score += 1
 	game_hud_ui.increase_score()
 	player.set_weapon(get_new_weapon(player.weapon.type))
 	spawn_box()
@@ -45,7 +46,7 @@ func get_new_weapon(previous_weapon: Weapon.Type) -> String:
 func on_player_died() -> void:
 	is_game_over = true
 	game_end_ui.visible = true
-	GameSave.save()
+	GameSave.try_save_score(current_score, level_index)
 
 
 func _input(event: InputEvent) -> void:
