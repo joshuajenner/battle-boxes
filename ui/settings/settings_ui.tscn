@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b3vy3jld1v505" path="res://ui/settings/resolution_option_button.gd" id="2_1ub5d"]
 [ext_resource type="Script" uid="uid://dur1c6qon51yk" path="res://ui/settings/window_mode_option_button.gd" id="2_e04ht"]
 [ext_resource type="Script" uid="uid://bbpdu06ryyimw" path="res://ui/settings/video_settings_ui.gd" id="2_s7htu"]
+[ext_resource type="Script" uid="uid://ddkc42mung8xi" path="res://ui/settings/keybinds_ui.gd" id="6_s7htu"]
 
 [node name="SettingsUI" type="TabContainer" unique_id=117789628]
 texture_filter = 1
@@ -85,3 +86,10 @@ text = "Reset"
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Keybinds" unique_id=1464245010]
+layout_mode = 2
+script = ExtResource("6_s7htu")
+minimum_button_width = 150
+capitalize_action_labels = true
+bindings_per_action = 2
