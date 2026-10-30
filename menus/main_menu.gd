@@ -13,6 +13,7 @@ func _ready() -> void:
 	credits_button.pressed.connect(on_credits_button_pressed)
 	quit_button.pressed.connect(on_quit_button_pressed)
 	GameSave.load_save()
+	AutoKeybinds.load_settings()
 
 
 func on_play_button_pressed() -> void:
