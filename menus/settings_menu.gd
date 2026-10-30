@@ -10,5 +10,4 @@ func _ready() -> void:
 
 func on_back_button_pressed() -> void:
 	VideoSettings.save()
-	AudioSettings.save()
 	SceneManager.switch_to(Scenes.MAIN_MENU)
